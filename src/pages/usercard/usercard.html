@@ -1,0 +1,13 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>usercard</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <user-card [userData]="it" [ownerData]="userInfo" [contactData]="contacts"
+  (onClickSub)="onClickMore($event,it.id)"></user-card>
+</ion-content>

@@ -1,0 +1,12 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content no-padding>
+    <div *ngFor="let it of dynamicCards?.items">
+        <div *ngIf="it.content">
+            <content-card [contentData]="it.content" [showDetails]="it.show_detail"
+                (onClickSub)="onClickOpenLink($event)" (onClickImage)="onClickImage($event)"></content-card>
+        </div>
+    </div>
+</ion-content>
