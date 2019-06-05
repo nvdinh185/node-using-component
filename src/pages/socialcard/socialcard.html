@@ -1,0 +1,15 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>socialcard</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngFor="let it of dynamicCards?.items">
+    <social-card [resultData]="it.results" [actionData]="it.actions" (onClickSub)="onClickAction($event,it.id)">
+    </social-card>
+  </div>
+</ion-content>

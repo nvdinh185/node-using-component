@@ -47,4 +47,15 @@ export class ApiAuthService {
                 return rtn;
             });
     }
+
+    createObjectKey = (obj, key, value) => {
+        Object.defineProperty(obj, key, { value: value, writable: true, enumerable: true, configurable: true });
+        obj.length = obj.length ? obj.length + 1 : 1;
+        return obj;
+    }
+
+    deleteObjectKey = (obj, key) => {
+        if (delete obj[key]) obj.length = obj.length ? obj.length - 1 : undefined;
+        return obj;
+    }
 }

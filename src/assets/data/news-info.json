@@ -4,53 +4,20 @@
         "username": "903500888",
         "content": "Đọc báo dân trí tại https://dantri.com.vn để biết các tin tức nhanh nhất. Trang tuoitre.vn tin tức phản biện tạm được. Trang https://thanhnien.vn giờ đọc tin thấy không có gì phản biện hay cả",
         "time": 1558946422228,
-        "status": 1
-    },
-    {
-        "id": "2",
-        "username": "702418821",
-        "content": "Đọc báo tuổi trẻ online tại tuoitre.vn",
-        "time": 1558947522228,
-        "status": 2
-    },
-    {
-        "id": "3",
-        "username": "905000551",
-        "content": "https://tuoitre.vn/vua-thong-xe-cau-vam-cong-da-bi-boi-xau-20190519170958275.htm",
-        "actions": {
+        "status": 1,
+		"actions": {
             "like": true,
             "comment": true,
             "share": true
         }
     },
     {
-        "id": "4",
-        "username": "934901567",
-        "content": "https://dantri.com.vn/phap-luat/truy-na-ong-chu-nhat-cuong-mobile-20190519172629857.htm",
-        "results": {
-            "likes": {
-                "901234566": "like",
-                "875321223": "love",
-                "702418821": "unlike",
-                "903500888": "sad",
-                "905300888": "angery",
-                "like": 1,
-                "love": 1,
-                "unlike": 1,
-                "sad": 1,
-                "angery": 1,
-                "length": 5
-            }
-        },
-        "actions": {
-            "like": true
-        }
-    },
-    {
-        "id": "5",
+        "id": "2",
         "username": "901952666",
         "content": "website nhóm Cấp 3 https://www.facebook.com/groups/cap3.vinhloc.1987.1990",
-        "results": {
+        "time": 1558948422228,
+		"status": 2,
+		"results": {
             "likes": {
                 "like": 0,
                 "love": 0,
@@ -72,10 +39,28 @@
         }
     },
     {
-        "id": "6",
+        "id": "3",
         "username": "766777123",
         "content": "Chi tiết nè https://dantri.com.vn/phap-luat/hanh-trinh-nhap-phai-tu-luyen-cuong-tin-den-giet-nguoi-giau-xac-trong-be-tong-20190519133532811.htm",
-        "show_detail": true,
+        "time": 1558996422228,
+		"show_detail": true,
+		"status": 3,
+		"results": {
+            "likes": {
+                "like": 0,
+                "love": 0,
+                "unlike": 0,
+                "sad": 0,
+                "angery": 0
+            },
+            "comments": [
+                "cuong.dq",
+				"dinh.nv"
+            ],
+            "shares": [
+                "cuong.dq"
+            ]
+        },
         "url_info": [
             {
                 "hostname": "dantri.com.vn",

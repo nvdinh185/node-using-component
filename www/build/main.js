@@ -1,152 +1,12 @@
 webpackJsonp([0],{
 
-/***/ 161:
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncatched exception popping up in devtools
-	return Promise.resolve().then(function() {
-		throw new Error("Cannot find module '" + req + "'.");
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 161;
-
-/***/ }),
-
-/***/ 205:
-/***/ (function(module, exports) {
-
-function webpackEmptyAsyncContext(req) {
-	// Here Promise.resolve().then() is used instead of new Promise() to prevent
-	// uncatched exception popping up in devtools
-	return Promise.resolve().then(function() {
-		throw new Error("Cannot find module '" + req + "'.");
-	});
-}
-webpackEmptyAsyncContext.keys = function() { return []; };
-webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
-module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 205;
-
-/***/ }),
-
-/***/ 248:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UsercardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__ = __webpack_require__(77);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var UsercardPage = /** @class */ (function () {
-    function UsercardPage(apiAuth, navCtrl, navParams) {
-        this.apiAuth = apiAuth;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.dynamicCards = {
-            items: []
-        };
-    }
-    UsercardPage.prototype.ngOnInit = function () {
-        var _this = this;
-        setTimeout(function () {
-            console.log(_this.dynamicCards.items);
-        }, 2000);
-        this.apiAuth.getDynamicUrl('assets/data/news-info.json')
-            .then(function (res) {
-            _this.dynamicCards.items = res;
-        })
-            .catch(function (err) { return console.log(err); });
-        this.contacts = { 123456789: {} };
-        this.userInfo = { username: "766777123", data: { fullname: "Nguyen Van Dinh" } };
-    };
-    UsercardPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-usercard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\usercard\usercard.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>usercard</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngFor="let it of dynamicCards?.items">\n    <user-card [userData]="it" [ownerData]="userInfo" [contactData]="contacts" (onClickSub)="onClickMore($event,it.id)">\n    </user-card>\n  </div>\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\usercard\usercard.html"*/,
-        }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _c || Object])
-    ], UsercardPage);
-    return UsercardPage;
-    var _a, _b, _c;
-}());
-
-//# sourceMappingURL=usercard.js.map
-
-/***/ }),
-
-/***/ 252:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RequestInterceptor; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var token;
-var RequestInterceptor = /** @class */ (function () {
-    function RequestInterceptor() {
-    }
-    RequestInterceptor.prototype.intercept = function (request, next) {
-        if (token) {
-            //console.log('request with token interceptor!')
-            request = request.clone({
-                setHeaders: {
-                    Authorization: 'Bearer ' + token
-                }
-            });
-        }
-        return next.handle(request);
-    };
-    RequestInterceptor.prototype.setRequestToken = function (tk) {
-        if (tk) {
-            token = tk;
-        }
-        else {
-            token = '';
-        }
-    };
-    RequestInterceptor = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [])
-    ], RequestInterceptor);
-    return RequestInterceptor;
-}());
-
-//# sourceMappingURL=requestInterceptor.js.map
-
-/***/ }),
-
-/***/ 344:
+/***/ 151:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PopoverCard; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -212,6 +72,144 @@ var PopoverCard = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 162:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 162;
+
+/***/ }),
+
+/***/ 206:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 206;
+
+/***/ }),
+
+/***/ 249:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SocialcardPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__ = __webpack_require__(55);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var SocialcardPage = /** @class */ (function () {
+    function SocialcardPage(apiAuth, navCtrl, navParams) {
+        this.apiAuth = apiAuth;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.dynamicCards = {
+            items: []
+        };
+    }
+    SocialcardPage.prototype.ngOnInit = function () {
+        var _this = this;
+        setTimeout(function () {
+            console.log(_this.dynamicCards.items);
+        }, 2000);
+        this.apiAuth.getDynamicUrl('assets/data/news-info.json')
+            .then(function (res) {
+            _this.dynamicCards.items = res;
+        })
+            .catch(function (err) { return console.log(err); });
+    };
+    SocialcardPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-socialcard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\socialcard\socialcard.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>socialcard</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngFor="let it of dynamicCards?.items">\n    <social-card [resultData]="it.results" [actionData]="it.actions" (onClickSub)="onClickAction($event,it.id)">\n    </social-card>\n  </div>\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\socialcard\socialcard.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _c || Object])
+    ], SocialcardPage);
+    return SocialcardPage;
+    var _a, _b, _c;
+}());
+
+//# sourceMappingURL=socialcard.js.map
+
+/***/ }),
+
+/***/ 253:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RequestInterceptor; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var token;
+var RequestInterceptor = /** @class */ (function () {
+    function RequestInterceptor() {
+    }
+    RequestInterceptor.prototype.intercept = function (request, next) {
+        if (token) {
+            //console.log('request with token interceptor!')
+            request = request.clone({
+                setHeaders: {
+                    Authorization: 'Bearer ' + token
+                }
+            });
+        }
+        return next.handle(request);
+    };
+    RequestInterceptor.prototype.setRequestToken = function (tk) {
+        if (tk) {
+            token = tk;
+        }
+        else {
+            token = '';
+        }
+    };
+    RequestInterceptor = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [])
+    ], RequestInterceptor);
+    return RequestInterceptor;
+}());
+
+//# sourceMappingURL=requestInterceptor.js.map
+
+/***/ }),
+
 /***/ 345:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -231,32 +229,36 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(387);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(393);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(394);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(395);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_apiAuthService__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common_http__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_apiAuthService__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common_http__ = __webpack_require__(250);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_time_ago_pipe__ = __webpack_require__(396);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__interceptors_requestInterceptor__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__interceptors_requestInterceptor__ = __webpack_require__(253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_home_news_home_news__ = __webpack_require__(397);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pipes_linkify__ = __webpack_require__(679);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pipes_new_line__ = __webpack_require__(680);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_content_card_content_card__ = __webpack_require__(681);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_in_app_browser_ngx__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_native_in_app_browser_ngx__ = __webpack_require__(254);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_image_card_image_card__ = __webpack_require__(682);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_user_card_user_card__ = __webpack_require__(683);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_usercard_usercard__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_popover_card_popover_card__ = __webpack_require__(344);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_usercard_usercard__ = __webpack_require__(684);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_popover_card_popover_card__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_socialcard_socialcard__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_social_card_social_card__ = __webpack_require__(685);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -292,7 +294,9 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_16__components_image_card_image_card__["a" /* ImageCard */],
                 __WEBPACK_IMPORTED_MODULE_17__components_user_card_user_card__["a" /* UserCard */],
                 __WEBPACK_IMPORTED_MODULE_18__pages_usercard_usercard__["a" /* UsercardPage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_socialcard_socialcard__["a" /* SocialcardPage */],
                 __WEBPACK_IMPORTED_MODULE_19__components_popover_card_popover_card__["a" /* PopoverCard */],
+                __WEBPACK_IMPORTED_MODULE_21__components_social_card_social_card__["a" /* SocialCard */],
                 __WEBPACK_IMPORTED_MODULE_9_time_ago_pipe__["a" /* TimeAgoPipe */]
             ],
             imports: [
@@ -308,6 +312,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */],
                 __WEBPACK_IMPORTED_MODULE_11__pages_home_news_home_news__["a" /* HomeNewsPage */],
                 __WEBPACK_IMPORTED_MODULE_18__pages_usercard_usercard__["a" /* UsercardPage */],
+                __WEBPACK_IMPORTED_MODULE_20__pages_socialcard_socialcard__["a" /* SocialcardPage */],
                 __WEBPACK_IMPORTED_MODULE_19__components_popover_card_popover_card__["a" /* PopoverCard */]
             ],
             providers: [
@@ -333,7 +338,7 @@ var AppModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_usercard_usercard__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_socialcard_socialcard__ = __webpack_require__(249);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -347,7 +352,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var MyApp = /** @class */ (function () {
     function MyApp() {
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_1__pages_usercard_usercard__["a" /* UsercardPage */]; //HomeNewsPage;//HomePage;
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_1__pages_socialcard_socialcard__["a" /* SocialcardPage */]; //UsercardPage //HomeNewsPage;//HomePage;
     }
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\app\app.html"*/
@@ -367,7 +372,7 @@ var MyApp = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -417,8 +422,8 @@ var HomePage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeNewsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser_ngx__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser_ngx__ = __webpack_require__(254);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -481,13 +486,94 @@ var HomeNewsPage = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 55:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ApiAuthService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__interceptors_requestInterceptor__ = __webpack_require__(253);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ApiAuthService = /** @class */ (function () {
+    function ApiAuthService(httpClient, reqInterceptor) {
+        this.httpClient = httpClient;
+        this.reqInterceptor = reqInterceptor;
+        this.createObjectKey = function (obj, key, value) {
+            Object.defineProperty(obj, key, { value: value, writable: true, enumerable: true, configurable: true });
+            obj.length = obj.length ? obj.length + 1 : 1;
+            return obj;
+        };
+        this.deleteObjectKey = function (obj, key) {
+            if (delete obj[key])
+                obj.length = obj.length ? obj.length - 1 : undefined;
+            return obj;
+        };
+    }
+    /**
+     * get url => req.paramS
+     * @param url
+     * @param token
+     * @param options
+     */
+    ApiAuthService.prototype.getDynamicUrl = function (url, token, options) {
+        //lay token cua phien xac thuc
+        this.reqInterceptor.setRequestToken(token && token.length ? token : token && this.tokenObject ? this.tokenObject.token : '');
+        return this.httpClient.get(url, options)
+            .toPromise()
+            .then(function (data) {
+            var rtn;
+            rtn = data;
+            return rtn;
+        });
+    };
+    /**
+     * post json_data => req.json_data
+     * @param url
+     * @param json_data
+     * @param token
+     */
+    ApiAuthService.prototype.postDynamicForm = function (url, json_data, token) {
+        //lay token cua phien xac thuc
+        this.reqInterceptor.setRequestToken(token && token.length ? token : token && this.tokenObject ? this.tokenObject.token : '');
+        return this.httpClient.post(url, JSON.stringify(json_data))
+            .toPromise()
+            .then(function (data) {
+            var rtn;
+            rtn = data;
+            return rtn;
+        });
+    };
+    ApiAuthService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__interceptors_requestInterceptor__["a" /* RequestInterceptor */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__interceptors_requestInterceptor__["a" /* RequestInterceptor */]) === "function" && _b || Object])
+    ], ApiAuthService);
+    return ApiAuthService;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=apiAuthService.js.map
+
+/***/ }),
+
 /***/ 679:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LinkifyPipe; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(55);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -765,8 +851,8 @@ var ImageCard = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserCard; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__popover_card_popover_card__ = __webpack_require__(344);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__popover_card_popover_card__ = __webpack_require__(151);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(39);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -893,14 +979,14 @@ var UserCard = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 77:
+/***/ 684:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ApiAuthService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__interceptors_requestInterceptor__ = __webpack_require__(252);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UsercardPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__ = __webpack_require__(55);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -913,54 +999,170 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ApiAuthService = /** @class */ (function () {
-    function ApiAuthService(httpClient, reqInterceptor) {
-        this.httpClient = httpClient;
-        this.reqInterceptor = reqInterceptor;
+var UsercardPage = /** @class */ (function () {
+    function UsercardPage(apiAuth, navCtrl, navParams) {
+        this.apiAuth = apiAuth;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.dynamicCards = {
+            items: []
+        };
     }
-    /**
-     * get url => req.paramS
-     * @param url
-     * @param token
-     * @param options
-     */
-    ApiAuthService.prototype.getDynamicUrl = function (url, token, options) {
-        //lay token cua phien xac thuc
-        this.reqInterceptor.setRequestToken(token && token.length ? token : token && this.tokenObject ? this.tokenObject.token : '');
-        return this.httpClient.get(url, options)
-            .toPromise()
-            .then(function (data) {
-            var rtn;
-            rtn = data;
-            return rtn;
-        });
+    UsercardPage.prototype.ngOnInit = function () {
+        var _this = this;
+        setTimeout(function () {
+            console.log(_this.dynamicCards.items);
+        }, 2000);
+        this.apiAuth.getDynamicUrl('assets/data/news-info.json')
+            .then(function (res) {
+            _this.dynamicCards.items = res;
+        })
+            .catch(function (err) { return console.log(err); });
+        this.contacts = { 903500888: { fullname: "Cuong Test", avatar: "data:image/png;base64,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" } };
+        this.userInfo = { username: "766777123", data: { fullname: "Nguyen Van Dinh", image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEA0lEQVRYR+2Wa1DUVRjGf2e5LIiLLigYlxC1HDSwoFEZxy4DFB+sD32IDzVNEYxOM02GWkyNQ30oyJmiqUxKMf1AJtk46mjNlEpeUsrABCOMUO7FRRkWcWGXPc05fzbI2OXmjH3g7M7O7tlz3vOc532f5/2L9NIUyW0cYhrANAP/ewYkEvVWH0IIhn+PIh2h5gTIIWEJgXp5G2OqQOpgbqV6DzZ80PB6BXpSAIyDIcA3gPvCkkmYk0ig30w95ymkZgeB3dlHdVclFX+doc9xXW/wxIRHBlxIQsyh5K7IJyIoBpccpNfRQ7D/bJ2K0YYCMOC0MyhdBPoF0dHXRn55Lu19bZiEadQ9XlOQl1zIQmuczmlZ0zcUVxVSnH4Ifx+zURNDXLjZQgg2lWXqW29N/QL1u9XWQO7JdSPS+G8cHgEkhq9kfWKeDqKYPVJfyue12yl+5CBm3wCEZnuICSmR+rvkdPNR7M4bpMSsMXIl4dML73Gq5duJMfDMkhdIm/8YZ9pOUFRZgAuVFHVrH2b6W9iWsvcfANfsXeSUPUvyHQ+SnbBBn/vR+XyqOiooSvuSyo6zFJ57c2IAMu95iYei0+kftNNku8zp5mN813iQ11ZsISQwjHlBEW51MiidHG88zLK5y7EGhOBwOWntbaK1t5HVUWlUd1aw5afXJwZgdWQa2Qk5xiYhONpwmF3VH7Dj0QOYdQ1Al70Tp2uA8BkRRj0IyaayLGyOHrallhp6EZI9NTv4+vJXEwPgZ/Kj4IHtzA2cp1PtdDn0raItse7UUvjzG/Q6bGxe+a4GIAVcaD/HgKuf+8NX6QLo7r/KxrJMPTfa8CrDxdalvJyUh8V/1pDClSBc+maH6vdS+ttOHXPNwgwyFj8HwqSL0/AD6HNe5+Pz7/BLezliMjJUQWaZrTwdt5aY4EX4mEz0DPSwr3aXzqs7qEu6uGt2HE8tWUewBitptl2hpOYTOm+0T84J3btUMGWKhuCGLVbiwiR89KwyqZudzlDpLegF6lBFuuFj4+sFRsNSqG8BAOVySsufVX/Ij3+e9Eqn+08f4UtR2j7eOruRKz11U0yBlGTEPU9SWDKvfJ8NDCKGqP9PZOWIwNplG4gOXsDmUy96tGD33rHbMRKrOZTCh3ez//cSDtTt8diMlFsq/8iKX8/b5a9y6epFj2snBEAtXhp6L7nLCzjWeIT9dSV093fpmtStQsIMPwuPL3qS9PlPsLP6fU40G94/5QeSkWqIDIomKz6HBda7qemsosH2B0qCUZYY4uck0WJrYPevW7l07eKYB4+bgZEA9I2kJMoSy6rIVO4MjtVe0NLbwA8tx6nvrjWWe3kAubluxqyBcZX9FBZNA5hm4LYz8DdKfcmwal+kKAAAAABJRU5ErkJggg==" } };
     };
-    /**
-     * post json_data => req.json_data
-     * @param url
-     * @param json_data
-     * @param token
-     */
-    ApiAuthService.prototype.postDynamicForm = function (url, json_data, token) {
-        //lay token cua phien xac thuc
-        this.reqInterceptor.setRequestToken(token && token.length ? token : token && this.tokenObject ? this.tokenObject.token : '');
-        return this.httpClient.post(url, JSON.stringify(json_data))
-            .toPromise()
-            .then(function (data) {
-            var rtn;
-            rtn = data;
-            return rtn;
-        });
-    };
-    ApiAuthService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_2__interceptors_requestInterceptor__["a" /* RequestInterceptor */]])
-    ], ApiAuthService);
-    return ApiAuthService;
+    UsercardPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-usercard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\usercard\usercard.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>usercard</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngFor="let it of dynamicCards?.items">\n    <user-card [userData]="it" [ownerData]="userInfo" [contactData]="contacts" (onClickSub)="onClickMore($event,it.id)">\n    </user-card>\n  </div>\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\usercard\usercard.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]])
+    ], UsercardPage);
+    return UsercardPage;
 }());
 
-//# sourceMappingURL=apiAuthService.js.map
+//# sourceMappingURL=usercard.js.map
+
+/***/ }),
+
+/***/ 685:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SocialCard; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__popover_card_popover_card__ = __webpack_require__(151);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+/**
+ * card hien thi thong tin text noi dung
+ * đưa vào text có chứa nội dung và url,
+ * card này sẽ hiển thị nội dung có link cho phép kích vào
+ * hiển thị các ảnh lấy được trong các link để hiển thị trong khung ảnh
+ * đồng thời hiển thị các link bên dưới của trang cho phép gọi inappbrowser
+ */
+
+
+
+
+var SocialCard = /** @class */ (function () {
+    function SocialCard(apiAuth, popoverCtrl) {
+        this.apiAuth = apiAuth;
+        this.popoverCtrl = popoverCtrl;
+        //sự kiện truyền các hành động thực hiện trên card này ra 
+        this.onClickSub = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
+        this.iconLikes = {
+            like: { name: "Thích", color: "primary", icon: "md-thumbs-up" },
+            love: { name: "Đáng yêu", color: "danger", icon: "heart" },
+            unlike: { name: "Không thích", color: "dark", icon: "md-thumbs-down" },
+            sad: { name: "Buồn", color: "sad", icon: "ios-sad-outline" },
+            angery: { name: "Giận sôi", color: "angery", icon: "ios-sad" }
+        };
+    }
+    SocialCard.prototype.ngOnInit = function () {
+        if (this.actionData) {
+            if (this.actionData["like"])
+                this.actionData["like"] = { name: "Thích", unname: "Bỏ thích", color: "gray", icon: "thumbs-up", unicon: "ios-notifications-off-outline", next: "LIKE" };
+            if (this.actionData["comment"])
+                this.actionData["comment"] = { name: "Góp ý", color: "gray", icon: "chatbubbles", next: "COMMENT" };
+            if (this.actionData["share"])
+                this.actionData["share"] = { name: "Chia sẻ", color: "gray", icon: "share-alt", next: "SHARE" };
+        }
+    };
+    //khi bấm vào phần tử item (toàn bộ dòng - thuộc tích click=true) 
+    //thì sự kiện này được sinh ra
+    SocialCard.prototype.onClickActions = function (ev, action) {
+        //console.log('action',action);
+        if (action.next === "LIKE") {
+            if (!this.resultData)
+                this.resultData = {};
+            if (!this.resultData["likes"])
+                Object.defineProperty(this.resultData, "likes", { value: {}, writable: true, enumerable: true, configurable: true });
+            if (this.ownerData) {
+                if (this.resultData.likes[this.ownerData.username] && this.resultData.likes[this.resultData.likes[this.ownerData.username]]) {
+                    //da like truoc do roi, nen bam lan nay la unlike
+                    this.resultData.likes[this.resultData.likes[this.ownerData.username]] -= 1;
+                    this.apiAuth.deleteObjectKey(this.resultData.likes, this.ownerData.username);
+                    this.onClickSub.emit({ action: { next: "LIKE" }, result: this.resultData });
+                }
+                else {
+                    //thuc hien chon lua like neu chap nhan thi them vao
+                    this.showRadioLikes(ev, this.ownerData.username);
+                }
+            }
+        }
+        else {
+            this.onClickSub.emit({ action: action });
+        }
+    };
+    SocialCard.prototype.showRadioLikes = function (ev, username) {
+        var _this = this;
+        var menu = [];
+        for (var key in this.iconLikes) {
+            this.iconLikes[key].value = key;
+            menu.push(this.iconLikes[key]);
+        }
+        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_3__popover_card_popover_card__["a" /* PopoverCard */], { form: {
+                type: "icon",
+                menu: menu
+            } });
+        popover.present({ ev: ev }); //truyen su kien de menu dung vi tri
+        //this.onClickSub.emit(data);
+        popover.onDidDismiss(function (data) {
+            if (data) {
+                _this.apiAuth.createObjectKey(_this.resultData.likes, username, data);
+                if (!_this.resultData.likes[data])
+                    Object.defineProperty(_this.resultData.likes, data, { value: 0, writable: true, enumerable: true, configurable: true });
+                _this.resultData.likes[data] += 1;
+                _this.onClickSub.emit({ action: { next: "LIKE" }, result: _this.resultData });
+            }
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Object)
+    ], SocialCard.prototype, "ownerData", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Object)
+    ], SocialCard.prototype, "resultData", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["D" /* Input */])(),
+        __metadata("design:type", Object)
+    ], SocialCard.prototype, "actionData", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Output */])(),
+        __metadata("design:type", Object)
+    ], SocialCard.prototype, "onClickSub", void 0);
+    SocialCard = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'social-card',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\components\social-card\social-card.html"*/'<!-- Các kết quả ghi nhận được -->\n\n<ion-item no-padding *ngIf="\n\n        (resultData?.likes?.length>0)\n\n        ||\n\n        (resultData?.comments?.length>0)\n\n        ||\n\n        (resultData?.shares?.length>0)">\n\n    <ion-row no-padding>\n\n        <ion-col no-padding align-self-center text-center>\n\n            <div *ngIf="resultData?.likes?.length>0">\n\n                <ion-icon *ngIf="resultData?.likes?.like>0" color="{{iconLikes?.like?.color}}" icon-start clear small name="{{iconLikes?.like?.icon}}"></ion-icon>\n\n                <ion-icon *ngIf="resultData?.likes?.love>0" color="{{iconLikes?.love?.color}}" icon-start clear small name="{{iconLikes?.love?.icon}}"></ion-icon>\n\n                <ion-icon *ngIf="resultData?.likes?.unlike>0" color="{{iconLikes?.unlike?.color}}" icon-start clear small name="{{iconLikes?.unlike?.icon}}"></ion-icon>\n\n                <ion-icon *ngIf="resultData?.likes?.sad>0" color="{{iconLikes?.sad?.color}}" icon-start clear small name="{{iconLikes?.sad?.icon}}"></ion-icon>\n\n                <ion-icon *ngIf="resultData?.likes?.angery>0" color="{{iconLikes?.angery?.color}}" icon-start clear small name="{{iconLikes?.angery?.icon}}"></ion-icon>\n\n                <ion-note *ngIf="resultData?.likes?.length>0">{{resultData?.likes?.length}}</ion-note>\n\n            </div>\n\n        </ion-col>\n\n        <ion-col no-padding  align-self-center text-center>\n\n            <ion-note *ngIf="resultData?.comments?.length>0">{{(resultData?.comments?.length)}} Comments</ion-note>\n\n        </ion-col>\n\n        <ion-col no-padding  align-self-center text-center>\n\n            <ion-note *ngIf="resultData?.shares?.length>0">{{(resultData?.shares?.length)}} Shares</ion-note>\n\n        </ion-col>\n\n    </ion-row>\n\n</ion-item>\n\n\n\n<!-- Các nút lệnh cho phép hành động like, comment, share -->\n\n<ion-item no-padding *ngIf="actionData?.like || actionData?.comment || actionData?.share">\n\n    <ion-row>\n\n        <ion-col no-padding text-center>\n\n            <button *ngIf="actionData?.like" ion-button clear small \n\n            color="{{(resultData?.likes[ownerData?.username]?iconLikes[resultData?.likes[ownerData?.username]].color:actionData?.like?.color)}}" \n\n            (click)="onClickActions($event,actionData?.like)"\n\n                icon-start>\n\n                <ion-icon name="{{(resultData?.likes[ownerData?.username]?iconLikes[resultData?.likes[ownerData?.username]].icon:actionData?.like?.icon)}}"></ion-icon>\n\n                {{(resultData?.likes[ownerData?.username]?iconLikes[resultData?.likes[ownerData?.username]].name:actionData?.like?.name)}}\n\n            </button>\n\n        </ion-col>\n\n        <ion-col no-padding text-center>\n\n            <button *ngIf="actionData?.comment" ion-button clear small color="{{actionData?.comment?.color}}" (click)="onClickActions($event,actionData?.comment)"\n\n                icon-start>\n\n                <ion-icon name=\'{{actionData?.comment?.icon}}\'></ion-icon>\n\n                {{actionData?.comment?.name}}\n\n            </button>\n\n        </ion-col>\n\n        <ion-col no-padding text-center>\n\n            <button *ngIf="actionData?.share" ion-button clear small color="{{actionData?.share?.color}}" (click)="onClickActions($event,actionData?.share)"\n\n                icon-start>\n\n                <ion-icon name=\'{{actionData?.share?.icon}}\'></ion-icon>\n\n                {{actionData?.share?.name}}\n\n            </button>\n\n        </ion-col>\n\n    </ion-row>\n\n</ion-item>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\components\social-card\social-card.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* PopoverController */]])
+    ], SocialCard);
+    return SocialCard;
+}());
+
+//# sourceMappingURL=social-card.js.map
 
 /***/ })
 

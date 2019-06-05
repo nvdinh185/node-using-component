@@ -19,6 +19,8 @@ import { ImageCard } from '../components/image-card/image-card';
 import { UserCard } from '../components/user-card/user-card';
 import { UsercardPage } from '../pages/usercard/usercard';
 import { PopoverCard } from '../components/popover-card/popover-card';
+import { SocialcardPage } from '../pages/socialcard/socialcard';
+import { SocialCard } from '../components/social-card/social-card';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { PopoverCard } from '../components/popover-card/popover-card';
     ImageCard,
     UserCard,
     UsercardPage,
+    SocialcardPage,
     PopoverCard,
+    SocialCard,
     TimeAgoPipe
   ],
   imports: [
@@ -45,6 +49,7 @@ import { PopoverCard } from '../components/popover-card/popover-card';
     HomePage,
     HomeNewsPage,
     UsercardPage,
+    SocialcardPage,
     PopoverCard
   ],
   providers: [
