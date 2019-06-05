@@ -1,76 +1,5 @@
 webpackJsonp([0],{
 
-/***/ 136:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ApiAuthService; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__interceptors_requestInterceptor__ = __webpack_require__(252);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var ApiAuthService = /** @class */ (function () {
-    function ApiAuthService(httpClient, reqInterceptor) {
-        this.httpClient = httpClient;
-        this.reqInterceptor = reqInterceptor;
-    }
-    /**
-     * get url => req.paramS
-     * @param url
-     * @param token
-     * @param options
-     */
-    ApiAuthService.prototype.getDynamicUrl = function (url, token, options) {
-        //lay token cua phien xac thuc
-        this.reqInterceptor.setRequestToken(token && token.length ? token : token && this.tokenObject ? this.tokenObject.token : '');
-        return this.httpClient.get(url, options)
-            .toPromise()
-            .then(function (data) {
-            var rtn;
-            rtn = data;
-            return rtn;
-        });
-    };
-    /**
-     * post json_data => req.json_data
-     * @param url
-     * @param json_data
-     * @param token
-     */
-    ApiAuthService.prototype.postDynamicForm = function (url, json_data, token) {
-        //lay token cua phien xac thuc
-        this.reqInterceptor.setRequestToken(token && token.length ? token : token && this.tokenObject ? this.tokenObject.token : '');
-        return this.httpClient.post(url, JSON.stringify(json_data))
-            .toPromise()
-            .then(function (data) {
-            var rtn;
-            rtn = data;
-            return rtn;
-        });
-    };
-    ApiAuthService = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_2__interceptors_requestInterceptor__["a" /* RequestInterceptor */]])
-    ], ApiAuthService);
-    return ApiAuthService;
-}());
-
-//# sourceMappingURL=apiAuthService.js.map
-
-/***/ }),
-
 /***/ 161:
 /***/ (function(module, exports) {
 
@@ -112,6 +41,7 @@ webpackEmptyAsyncContext.id = 205;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UsercardPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__ = __webpack_require__(77);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -123,21 +53,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var UsercardPage = /** @class */ (function () {
-    function UsercardPage(navCtrl, navParams) {
+    function UsercardPage(apiAuth, navCtrl, navParams) {
+        this.apiAuth = apiAuth;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.dynamicCards = {
+            items: []
+        };
     }
-    UsercardPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad UsercardPage');
+    UsercardPage.prototype.ngOnInit = function () {
+        var _this = this;
+        setTimeout(function () {
+            console.log(_this.dynamicCards.items);
+        }, 2000);
+        this.apiAuth.getDynamicUrl('assets/data/news-info.json')
+            .then(function (res) {
+            _this.dynamicCards.items = res;
+        })
+            .catch(function (err) { return console.log(err); });
+        this.contacts = { 123456789: {} };
+        this.userInfo = { username: "766777123", data: { fullname: "Nguyen Van Dinh" } };
     };
     UsercardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-usercard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\usercard\usercard.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>usercard</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <user-card [userData]="it" [ownerData]="userInfo" [contactData]="contacts"\n  (onClickSub)="onClickMore($event,it.id)"></user-card>\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\usercard\usercard.html"*/,
+            selector: 'page-usercard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\usercard\usercard.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>usercard</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngFor="let it of dynamicCards?.items">\n    <user-card [userData]="it" [ownerData]="userInfo" [contactData]="contacts" (onClickSub)="onClickMore($event,it.id)">\n    </user-card>\n  </div>\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\usercard\usercard.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _c || Object])
     ], UsercardPage);
     return UsercardPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=usercard.js.map
@@ -292,7 +238,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(393);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(394);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(395);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_apiAuthService__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_apiAuthService__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common_http__ = __webpack_require__(249);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_time_ago_pipe__ = __webpack_require__(396);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__interceptors_requestInterceptor__ = __webpack_require__(252);
@@ -361,7 +307,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */],
                 __WEBPACK_IMPORTED_MODULE_11__pages_home_news_home_news__["a" /* HomeNewsPage */],
-                __WEBPACK_IMPORTED_MODULE_18__pages_usercard_usercard__["a" /* UsercardPage */]
+                __WEBPACK_IMPORTED_MODULE_18__pages_usercard_usercard__["a" /* UsercardPage */],
+                __WEBPACK_IMPORTED_MODULE_19__components_popover_card_popover_card__["a" /* PopoverCard */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
@@ -470,7 +417,7 @@ var HomePage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeNewsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser_ngx__ = __webpack_require__(253);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -540,7 +487,7 @@ var HomeNewsPage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LinkifyPipe; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(77);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -935,7 +882,7 @@ var UserCard = /** @class */ (function () {
     ], UserCard.prototype, "onClickSub", void 0);
     UserCard = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'user-card',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\components\user-card\user-card.html"*/'<!-- userData cần phải chứa .username == username, .id, .time là thời gian của tin tức -->\n\n<ion-item  *ngIf="userData">\n\n    <!-- Cần truyền thêm ownerData = userInfo là username được login vào -->\n\n    <ion-avatar item-start *ngIf="ownerData?.username===userData.username">\n\n        <img *ngIf="ownerData?.data?.image" [src]="ownerData?.data?.image">\n\n        <img *ngIf="!(ownerData?.data?.image)" src="assets/imgs/no-image-go.jpg">\n\n    </ion-avatar>\n\n    <ion-title *ngIf="ownerData?.username===userData.username">{{ownerData?.data?.fullname?ownerData?.data?.fullname:ownerData?.username}}</ion-title>\n\n    <!-- Cần phải truyền cho form danh danh bạ chứa thông tin người dùng -->\n\n    <ion-avatar item-start *ngIf="ownerData?.username!==userData.username">\n\n        <img *ngIf="contactData[userData.username]&&contactData[userData.username].avatar" [src]="contactData[userData.username].avatar">\n\n        <img *ngIf="!(contactData[userData.username]&&contactData[userData.username].avatar)" src="assets/imgs/no-image-go.jpg">\n\n    </ion-avatar>\n\n    <ion-title *ngIf="ownerData?.username!==userData.username">{{contactData[userData.username]&&contactData[userData.username].fullname?contactData[userData.username].fullname:userData.username}}</ion-title>\n\n    <!-- Tin tức được post lên thời gian nào -->\n\n    <ion-note style="color: gray">\n\n        {{userData.time | timeAgo}}\n\n        <ion-icon name="{{(statusIcon[userData.status]?statusIcon[userData.status]:\'md-globe\')}}"></ion-icon>\n\n    </ion-note>\n\n    <!-- nút more infor sẽ hiển thị thông tin của username này lên, bằng backgroud, ảnh đại diện, tên hiển thị -->\n\n    <button item-end icon-only ion-button clear small color="primary" (click)="onClickMore($event,ownerData?.username===userData.username,(statusIcon[userData.status]?statusIcon[userData.status]:\'md-globe\'))">\n\n        <ion-icon name="more"></ion-icon>\n\n    </button>\n\n</ion-item>\n\n<p>this is user-card</p>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\components\user-card\user-card.html"*/
+            selector: 'user-card',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\components\user-card\user-card.html"*/'<!-- userData cần phải chứa .username == username, .id, .time là thời gian của tin tức -->\n\n<ion-item  *ngIf="userData">\n\n    <!-- Cần truyền thêm ownerData = userInfo là username được login vào -->\n\n    <ion-avatar item-start *ngIf="ownerData?.username===userData.username">\n\n        <img *ngIf="ownerData?.data?.image" [src]="ownerData?.data?.image">\n\n        <img *ngIf="!(ownerData?.data?.image)" src="assets/imgs/no-image-go.jpg">\n\n    </ion-avatar>\n\n    <ion-title *ngIf="ownerData?.username===userData.username">{{ownerData?.data?.fullname?ownerData?.data?.fullname:ownerData?.username}}</ion-title>\n\n    <!-- Cần phải truyền cho form danh danh bạ chứa thông tin người dùng -->\n\n    <ion-avatar item-start *ngIf="ownerData?.username!==userData.username">\n\n        <img *ngIf="contactData[userData.username]&&contactData[userData.username].avatar" [src]="contactData[userData.username].avatar">\n\n        <img *ngIf="!(contactData[userData.username]&&contactData[userData.username].avatar)" src="assets/imgs/no-image-go.jpg">\n\n    </ion-avatar>\n\n    <ion-title *ngIf="ownerData?.username!==userData.username">{{contactData[userData.username]&&contactData[userData.username].fullname?contactData[userData.username].fullname:userData.username}}</ion-title>\n\n    <!-- Tin tức được post lên thời gian nào -->\n\n    <ion-note style="color: gray">\n\n        {{userData.time | timeAgo}}\n\n        <ion-icon name="{{(statusIcon[userData.status]?statusIcon[userData.status]:\'md-globe\')}}"></ion-icon>\n\n    </ion-note>\n\n    <!-- nút more infor sẽ hiển thị thông tin của username này lên, bằng backgroud, ảnh đại diện, tên hiển thị -->\n\n    <button item-end icon-only ion-button clear small color="primary" (click)="onClickMore($event,ownerData?.username===userData.username,(statusIcon[userData.status]?statusIcon[userData.status]:\'md-globe\'))">\n\n        <ion-icon name="more"></ion-icon>\n\n    </button>\n\n</ion-item>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\components\user-card\user-card.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* PopoverController */]])
     ], UserCard);
@@ -943,6 +890,77 @@ var UserCard = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=user-card.js.map
+
+/***/ }),
+
+/***/ 77:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ApiAuthService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__interceptors_requestInterceptor__ = __webpack_require__(252);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ApiAuthService = /** @class */ (function () {
+    function ApiAuthService(httpClient, reqInterceptor) {
+        this.httpClient = httpClient;
+        this.reqInterceptor = reqInterceptor;
+    }
+    /**
+     * get url => req.paramS
+     * @param url
+     * @param token
+     * @param options
+     */
+    ApiAuthService.prototype.getDynamicUrl = function (url, token, options) {
+        //lay token cua phien xac thuc
+        this.reqInterceptor.setRequestToken(token && token.length ? token : token && this.tokenObject ? this.tokenObject.token : '');
+        return this.httpClient.get(url, options)
+            .toPromise()
+            .then(function (data) {
+            var rtn;
+            rtn = data;
+            return rtn;
+        });
+    };
+    /**
+     * post json_data => req.json_data
+     * @param url
+     * @param json_data
+     * @param token
+     */
+    ApiAuthService.prototype.postDynamicForm = function (url, json_data, token) {
+        //lay token cua phien xac thuc
+        this.reqInterceptor.setRequestToken(token && token.length ? token : token && this.tokenObject ? this.tokenObject.token : '');
+        return this.httpClient.post(url, JSON.stringify(json_data))
+            .toPromise()
+            .then(function (data) {
+            var rtn;
+            rtn = data;
+            return rtn;
+        });
+    };
+    ApiAuthService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_2__interceptors_requestInterceptor__["a" /* RequestInterceptor */]])
+    ], ApiAuthService);
+    return ApiAuthService;
+}());
+
+//# sourceMappingURL=apiAuthService.js.map
 
 /***/ })
 

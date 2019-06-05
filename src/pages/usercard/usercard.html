@@ -8,6 +8,8 @@
 
 
 <ion-content padding>
-  <user-card [userData]="it" [ownerData]="userInfo" [contactData]="contacts"
-  (onClickSub)="onClickMore($event,it.id)"></user-card>
+  <div *ngFor="let it of dynamicCards?.items">
+    <user-card [userData]="it" [ownerData]="userInfo" [contactData]="contacts" (onClickSub)="onClickMore($event,it.id)">
+    </user-card>
+  </div>
 </ion-content>

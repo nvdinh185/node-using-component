@@ -44,7 +44,8 @@ import { PopoverCard } from '../components/popover-card/popover-card';
     MyApp,
     HomePage,
     HomeNewsPage,
-    UsercardPage
+    UsercardPage,
+    PopoverCard
   ],
   providers: [
     StatusBar,
