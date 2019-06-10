@@ -62,10 +62,10 @@ var PopoverCard = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'popover-card',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\components\popover-card\popover-card.html"*/'<!-- Lựa chọn tab theo kiểu bảng -->\n\n<ion-row *ngIf="dynamicForm?.type===\'tab\'">\n\n    <ion-col>\n\n        <button (click)="selectedValue(\'smaller\')" ion-item detail-none class="text-button text-smaller border-card">A</button>\n\n    </ion-col>\n\n    <ion-col>\n\n        <button (click)="selectedValue(\'larger\')" ion-item detail-none class="text-button text-larger border-card">A</button>\n\n    </ion-col>\n\n</ion-row>\n\n\n\n<!-- Mảng icon cần chọn ví dụ như lựa chọn cảm xúc -->\n\n<ion-toolbar *ngIf="dynamicForm?.type===\'icon\'" class="item-card">\n\n    <ion-buttons>\n\n        <button *ngFor="let it of dynamicForm?.menu; let idx=index;" ion-button icon-only color="{{it.color}}" (click)="selectedValue(it.value)">\n\n            <ion-icon name="{{it.icon}}"></ion-icon>\n\n        </button>             \n\n    </ion-buttons>\n\n</ion-toolbar>\n\n\n\n<!-- Chọn màu nền, thiết kế màu để chọn lựa -->\n\n<ion-row *ngIf="dynamicForm?.type===\'color\'" class="row-dots">\n\n    <ion-col>\n\n        <button ion-button="dot" (click)="selectedValue(\'white\')" class="dot-white" [class.selected]="background == \'white\'"></button>\n\n    </ion-col>\n\n    <ion-col>\n\n        <button ion-button="dot" (click)="selectedValue(\'tan\')" class="dot-tan" [class.selected]="background == \'tan\'"></button>\n\n    </ion-col>\n\n    <ion-col>\n\n        <button ion-button="dot" (click)="selectedValue(\'grey\')" class="dot-grey" [class.selected]="background == \'grey\'"></button>\n\n    </ion-col>\n\n    <ion-col>\n\n        <button ion-button="dot" (click)="selectedValue(\'black\')" class="dot-black" [class.selected]="background == \'black\'"></button>\n\n    </ion-col>\n\n</ion-row>\n\n\n\n<!-- Chọn một mảng giá trị biểu tượng và mô tả danh sách theo menu xuống -->\n\n<ion-list *ngIf="dynamicForm?.type===\'item\'">\n\n    <ion-item *ngFor="let it of dynamicForm?.menu; let idx=index;" tappable class="item-selected" (click)="selectedValue(it.value)">\n\n        <ion-icon *ngIf="it.icon" item-start name="{{it.icon}}" color="{{it.color}}"></ion-icon>\n\n        <ion-label>{{it.name}}</ion-label>\n\n    </ion-item>\n\n</ion-list>\n\n\n\n'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\components\popover-card\popover-card.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ViewController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ViewController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ViewController */]) === "function" && _b || Object])
     ], PopoverCard);
     return PopoverCard;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=popover-card.js.map
@@ -113,7 +113,7 @@ webpackEmptyAsyncContext.id = 206;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SocialcardPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__ = __webpack_require__(44);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -131,6 +131,7 @@ var SocialcardPage = /** @class */ (function () {
         this.apiAuth = apiAuth;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.userInfo = { username: 766777123 };
         this.dynamicCards = {
             items: []
         };
@@ -146,9 +147,12 @@ var SocialcardPage = /** @class */ (function () {
         })
             .catch(function (err) { return console.log(err); });
     };
+    SocialcardPage.prototype.onClickAction = function (ev, id) {
+        console.log(ev);
+    };
     SocialcardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-socialcard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\socialcard\socialcard.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>socialcard</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngFor="let it of dynamicCards?.items">\n    <social-card [resultData]="it.results" [actionData]="it.actions" (onClickSub)="onClickAction($event,it.id)">\n    </social-card>\n  </div>\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\socialcard\socialcard.html"*/,
+            selector: 'page-socialcard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\socialcard\socialcard.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>socialcard</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngFor="let it of dynamicCards?.items">\n    <social-card [resultData]="it.results" [actionData]="it.actions" [ownerData]="userInfo" (onClickSub)="onClickAction($event,it.id)">\n    </social-card>\n  </div>\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\pages\socialcard\socialcard.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _c || Object])
     ], SocialcardPage);
@@ -236,7 +240,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(393);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(394);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(395);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_apiAuthService__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__services_apiAuthService__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common_http__ = __webpack_require__(250);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_time_ago_pipe__ = __webpack_require__(396);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__interceptors_requestInterceptor__ = __webpack_require__(253);
@@ -422,7 +426,7 @@ var HomePage = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeNewsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser_ngx__ = __webpack_require__(254);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -486,7 +490,7 @@ var HomeNewsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 55:
+/***/ 44:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -557,10 +561,10 @@ var ApiAuthService = /** @class */ (function () {
     };
     ApiAuthService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__interceptors_requestInterceptor__["a" /* RequestInterceptor */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__interceptors_requestInterceptor__["a" /* RequestInterceptor */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */],
+            __WEBPACK_IMPORTED_MODULE_2__interceptors_requestInterceptor__["a" /* RequestInterceptor */]])
     ], ApiAuthService);
     return ApiAuthService;
-    var _a, _b;
 }());
 
 //# sourceMappingURL=apiAuthService.js.map
@@ -573,7 +577,7 @@ var ApiAuthService = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LinkifyPipe; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(44);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -986,7 +990,7 @@ var UserCard = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UsercardPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__ = __webpack_require__(44);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1041,7 +1045,7 @@ var UsercardPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SocialCard; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__popover_card_popover_card__ = __webpack_require__(151);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1120,10 +1124,12 @@ var SocialCard = /** @class */ (function () {
             this.iconLikes[key].value = key;
             menu.push(this.iconLikes[key]);
         }
-        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_3__popover_card_popover_card__["a" /* PopoverCard */], { form: {
+        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_3__popover_card_popover_card__["a" /* PopoverCard */], {
+            form: {
                 type: "icon",
                 menu: menu
-            } });
+            }
+        });
         popover.present({ ev: ev }); //truyen su kien de menu dung vi tri
         //this.onClickSub.emit(data);
         popover.onDidDismiss(function (data) {
@@ -1154,12 +1160,12 @@ var SocialCard = /** @class */ (function () {
     ], SocialCard.prototype, "onClickSub", void 0);
     SocialCard = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'social-card',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\components\social-card\social-card.html"*/'<!-- Các kết quả ghi nhận được -->\n\n<ion-item no-padding *ngIf="\n\n        (resultData?.likes?.length>0)\n\n        ||\n\n        (resultData?.comments?.length>0)\n\n        ||\n\n        (resultData?.shares?.length>0)">\n\n    <ion-row no-padding>\n\n        <ion-col no-padding align-self-center text-center>\n\n            <div *ngIf="resultData?.likes?.length>0">\n\n                <ion-icon *ngIf="resultData?.likes?.like>0" color="{{iconLikes?.like?.color}}" icon-start clear small name="{{iconLikes?.like?.icon}}"></ion-icon>\n\n                <ion-icon *ngIf="resultData?.likes?.love>0" color="{{iconLikes?.love?.color}}" icon-start clear small name="{{iconLikes?.love?.icon}}"></ion-icon>\n\n                <ion-icon *ngIf="resultData?.likes?.unlike>0" color="{{iconLikes?.unlike?.color}}" icon-start clear small name="{{iconLikes?.unlike?.icon}}"></ion-icon>\n\n                <ion-icon *ngIf="resultData?.likes?.sad>0" color="{{iconLikes?.sad?.color}}" icon-start clear small name="{{iconLikes?.sad?.icon}}"></ion-icon>\n\n                <ion-icon *ngIf="resultData?.likes?.angery>0" color="{{iconLikes?.angery?.color}}" icon-start clear small name="{{iconLikes?.angery?.icon}}"></ion-icon>\n\n                <ion-note *ngIf="resultData?.likes?.length>0">{{resultData?.likes?.length}}</ion-note>\n\n            </div>\n\n        </ion-col>\n\n        <ion-col no-padding  align-self-center text-center>\n\n            <ion-note *ngIf="resultData?.comments?.length>0">{{(resultData?.comments?.length)}} Comments</ion-note>\n\n        </ion-col>\n\n        <ion-col no-padding  align-self-center text-center>\n\n            <ion-note *ngIf="resultData?.shares?.length>0">{{(resultData?.shares?.length)}} Shares</ion-note>\n\n        </ion-col>\n\n    </ion-row>\n\n</ion-item>\n\n\n\n<!-- Các nút lệnh cho phép hành động like, comment, share -->\n\n<ion-item no-padding *ngIf="actionData?.like || actionData?.comment || actionData?.share">\n\n    <ion-row>\n\n        <ion-col no-padding text-center>\n\n            <button *ngIf="actionData?.like" ion-button clear small \n\n            color="{{(resultData?.likes[ownerData?.username]?iconLikes[resultData?.likes[ownerData?.username]].color:actionData?.like?.color)}}" \n\n            (click)="onClickActions($event,actionData?.like)"\n\n                icon-start>\n\n                <ion-icon name="{{(resultData?.likes[ownerData?.username]?iconLikes[resultData?.likes[ownerData?.username]].icon:actionData?.like?.icon)}}"></ion-icon>\n\n                {{(resultData?.likes[ownerData?.username]?iconLikes[resultData?.likes[ownerData?.username]].name:actionData?.like?.name)}}\n\n            </button>\n\n        </ion-col>\n\n        <ion-col no-padding text-center>\n\n            <button *ngIf="actionData?.comment" ion-button clear small color="{{actionData?.comment?.color}}" (click)="onClickActions($event,actionData?.comment)"\n\n                icon-start>\n\n                <ion-icon name=\'{{actionData?.comment?.icon}}\'></ion-icon>\n\n                {{actionData?.comment?.name}}\n\n            </button>\n\n        </ion-col>\n\n        <ion-col no-padding text-center>\n\n            <button *ngIf="actionData?.share" ion-button clear small color="{{actionData?.share?.color}}" (click)="onClickActions($event,actionData?.share)"\n\n                icon-start>\n\n                <ion-icon name=\'{{actionData?.share?.icon}}\'></ion-icon>\n\n                {{actionData?.share?.name}}\n\n            </button>\n\n        </ion-col>\n\n    </ion-row>\n\n</ion-item>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\components\social-card\social-card.html"*/
+            selector: 'social-card',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\components\social-card\social-card.html"*/'<!-- Các kết quả ghi nhận được -->\n\n<ion-item no-padding *ngIf="\n\n        (resultData?.likes?.length>0)\n\n        ||\n\n        (resultData?.comments?.length>0)\n\n        ||\n\n        (resultData?.shares?.length>0)">\n\n    <ion-row no-padding>\n\n        <ion-col no-padding align-self-center text-center>\n\n            <div *ngIf="resultData?.likes?.length>0">\n\n                <ion-icon *ngIf="resultData?.likes?.like>0" color="{{iconLikes?.like?.color}}" icon-start clear small\n\n                    name="{{iconLikes?.like?.icon}}"></ion-icon>\n\n                <ion-icon *ngIf="resultData?.likes?.love>0" color="{{iconLikes?.love?.color}}" icon-start clear small\n\n                    name="{{iconLikes?.love?.icon}}"></ion-icon>\n\n                <ion-icon *ngIf="resultData?.likes?.unlike>0" color="{{iconLikes?.unlike?.color}}" icon-start clear\n\n                    small name="{{iconLikes?.unlike?.icon}}"></ion-icon>\n\n                <ion-icon *ngIf="resultData?.likes?.sad>0" color="{{iconLikes?.sad?.color}}" icon-start clear small\n\n                    name="{{iconLikes?.sad?.icon}}"></ion-icon>\n\n                <ion-icon *ngIf="resultData?.likes?.angery>0" color="{{iconLikes?.angery?.color}}" icon-start clear\n\n                    small name="{{iconLikes?.angery?.icon}}"></ion-icon>\n\n                <ion-note *ngIf="resultData?.likes?.length>0">{{resultData?.likes?.length}}</ion-note>\n\n            </div>\n\n        </ion-col>\n\n        <ion-col no-padding align-self-center text-center>\n\n            <ion-note *ngIf="resultData?.comments?.length>0">{{(resultData?.comments?.length)}} Comments</ion-note>\n\n        </ion-col>\n\n        <ion-col no-padding align-self-center text-center>\n\n            <ion-note *ngIf="resultData?.shares?.length>0">{{(resultData?.shares?.length)}} Shares</ion-note>\n\n        </ion-col>\n\n    </ion-row>\n\n</ion-item>\n\n\n\n<!-- Các nút lệnh cho phép hành động like, comment, share -->\n\n<ion-item no-padding *ngIf="actionData?.like || actionData?.comment || actionData?.share">\n\n    <ion-row>\n\n        <ion-col no-padding text-center>\n\n            <button *ngIf="actionData?.like" ion-button clear small\n\n                color="{{(resultData?.likes[ownerData?.username]?iconLikes[resultData?.likes[ownerData?.username]].color:actionData?.like?.color)}}"\n\n                (click)="onClickActions($event,actionData?.like)" icon-start>\n\n                <ion-icon\n\n                    name="{{(resultData?.likes[ownerData?.username]?iconLikes[resultData?.likes[ownerData?.username]].icon:actionData?.like?.icon)}}">\n\n                </ion-icon>\n\n                {{(resultData?.likes[ownerData?.username]?iconLikes[resultData?.likes[ownerData?.username]].name:actionData?.like?.name)}}\n\n            </button>\n\n        </ion-col>\n\n        <ion-col no-padding text-center>\n\n            <button *ngIf="actionData?.comment" ion-button clear small color="{{actionData?.comment?.color}}"\n\n                (click)="onClickActions($event,actionData?.comment)" icon-start>\n\n                <ion-icon name=\'{{actionData?.comment?.icon}}\'></ion-icon>\n\n                {{actionData?.comment?.name}}\n\n            </button>\n\n        </ion-col>\n\n        <ion-col no-padding text-center>\n\n            <button *ngIf="actionData?.share" ion-button clear small color="{{actionData?.share?.color}}"\n\n                (click)="onClickActions($event,actionData?.share)" icon-start>\n\n                <ion-icon name=\'{{actionData?.share?.icon}}\'></ion-icon>\n\n                {{actionData?.share?.name}}\n\n            </button>\n\n        </ion-col>\n\n    </ion-row>\n\n</ion-item>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-news\using-component\src\components\social-card\social-card.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* PopoverController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* PopoverController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* PopoverController */]) === "function" && _b || Object])
     ], SocialCard);
     return SocialCard;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=social-card.js.map

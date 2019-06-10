@@ -8,6 +8,7 @@ import { ApiAuthService } from '../../services/apiAuthService';
 })
 export class SocialcardPage {
 
+  userInfo = { username: 766777123 }
   constructor(private apiAuth: ApiAuthService, public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -24,6 +25,10 @@ export class SocialcardPage {
         this.dynamicCards.items = res
       })
       .catch(err => console.log(err))
+  }
+
+  onClickAction(ev, id) {
+    console.log(ev)
   }
 
 }

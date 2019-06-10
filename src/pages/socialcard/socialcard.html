@@ -9,7 +9,7 @@
 
 <ion-content padding>
   <div *ngFor="let it of dynamicCards?.items">
-    <social-card [resultData]="it.results" [actionData]="it.actions" (onClickSub)="onClickAction($event,it.id)">
+    <social-card [resultData]="it.results" [actionData]="it.actions" [ownerData]="userInfo" (onClickSub)="onClickAction($event,it.id)">
     </social-card>
   </div>
 </ion-content>
