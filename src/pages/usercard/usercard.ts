@@ -6,7 +6,7 @@ import { ApiAuthService } from '../../services/apiAuthService';
   selector: 'page-usercard',
   templateUrl: 'usercard.html',
 })
-export class UsercardPage {
+export class UserCardPage {
   contacts;
   userInfo;
   constructor(private apiAuth: ApiAuthService, public navCtrl: NavController, public navParams: NavParams) {
@@ -29,4 +29,7 @@ export class UsercardPage {
     items: []
   }
 
+  onClickMore(ev, id) {
+    console.log(id, ev)
+  }
 }

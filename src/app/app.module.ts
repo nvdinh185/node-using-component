@@ -5,35 +5,35 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { ApiAuthService } from '../services/apiAuthService';
 import { HttpClientModule } from '@angular/common/http';
 import { TimeAgoPipe} from 'time-ago-pipe';
-import { RequestInterceptor } from '../interceptors/requestInterceptor';
-import { HomeNewsPage } from '../pages/home-news/home-news';
-import { LinkifyPipe } from '../pipes/linkify';
-import { NewlinePipe } from '../pipes/new-line';
-import { ContentCard } from '../components/content-card/content-card';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { RequestInterceptor } from '../interceptors/requestInterceptor';
+import { ContentCard } from '../components/content-card/content-card';
 import { ImageCard } from '../components/image-card/image-card';
 import { UserCard } from '../components/user-card/user-card';
-import { UsercardPage } from '../pages/usercard/usercard';
 import { PopoverCard } from '../components/popover-card/popover-card';
-import { SocialcardPage } from '../pages/socialcard/socialcard';
 import { SocialCard } from '../components/social-card/social-card';
+import { ImageCardPage } from '../pages/imagecard/imagecard';
+import { ContentCardPage } from '../pages/contentcard/contentcard';
+import { UserCardPage } from '../pages/usercard/usercard';
+import { SocialCardPage } from '../pages/socialcard/socialcard';
+import { LinkifyPipe } from '../pipes/linkify';
+import { NewlinePipe } from '../pipes/new-line';
+import { ApiAuthService } from '../services/apiAuthService';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    HomeNewsPage,
+    ImageCardPage,
+    ContentCardPage,
     NewlinePipe,
     LinkifyPipe,
     ContentCard,
     ImageCard,
     UserCard,
-    UsercardPage,
-    SocialcardPage,
+    UserCardPage,
+    SocialCardPage,
     PopoverCard,
     SocialCard,
     TimeAgoPipe
@@ -46,10 +46,10 @@ import { SocialCard } from '../components/social-card/social-card';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    HomeNewsPage,
-    UsercardPage,
-    SocialcardPage,
+    ImageCardPage,
+    ContentCardPage,
+    UserCardPage,
+    SocialCardPage,
     PopoverCard
   ],
   providers: [

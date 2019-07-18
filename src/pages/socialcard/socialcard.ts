@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
 import { ApiAuthService } from '../../services/apiAuthService';
 
 @Component({
   selector: 'page-socialcard',
   templateUrl: 'socialcard.html',
 })
-export class SocialcardPage {
+export class SocialCardPage {
 
   userInfo = { username: 766777123 }
-  constructor(private apiAuth: ApiAuthService, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private apiAuth: ApiAuthService) {
   }
 
   dynamicCards = {
@@ -28,7 +27,7 @@ export class SocialcardPage {
   }
 
   onClickAction(ev, id) {
-    console.log(ev)
+    console.log(id, ev)
   }
 
 }

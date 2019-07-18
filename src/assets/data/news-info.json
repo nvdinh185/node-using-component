@@ -19,11 +19,12 @@
 		"status": 2,
 		"results": {
             "likes": {
-                "like": 0,
-                "love": 0,
+                "like": 2,
+                "love": 1,
                 "unlike": 0,
                 "sad": 0,
-                "angery": 0
+                "angery": 0,
+                "length": 3
             },
             "comments": [
                 "cuong.dq"
