@@ -13,31 +13,31 @@ import { PopoverController } from 'ionic-angular';
     selector: 'user-card',
     templateUrl: "user-card.html"
 })
-export class UserCard implements OnInit{
+export class UserCard implements OnInit {
     //các biến dữ liệu đầu vào
     @Input() userData: any; //là thông tin chứa: id của bản tin, username, cùng thời gian tạo bản tin này
     @Input() ownerData: any; //Là thông tin của đối tượng userInfo chứa username, .data.fullname...
     @Input() contactData: any; //danh bạ unique có chứa avatar đã chuyển đổi
-    
+
     //sự kiện sinh ra truyền giá trị con cho cấp cha 1 cấp
     @Output() onClickSub = new EventEmitter();
-    
+
     statusIcon = {
-        0:"ios-lock", //only me
-        1:"md-globe", //public
-        2:"ios-contacts", //friend
-        3:"ios-people-outline", //friend of friend
+        0: "ios-lock", //only me
+        1: "md-globe", //public
+        2: "ios-contacts", //friend
+        3: "ios-people-outline", //friend of friend
     }
 
     constructor(
         private popoverCtrl: PopoverController
     ) { }
 
-    ngOnInit() {}
+    ngOnInit() { }
 
     //sự kiện này được sinh ra khi bấm nút more
     //hiển thị popup menu tùy chọn cho các lệnh tùy vào tin của user hay của người khác
-    onClickMore(ev,isPrivate,icon){
+    onClickMore(ev, isPrivate, icon) {
 
         //neu tin cua user thi hien thi menu:
         //chinh sua nguoi doc tin (status) --list
@@ -47,65 +47,67 @@ export class UserCard implements OnInit{
         //neu tin cua user khac:
         //block khong xem tin nay nua
         //bao cao spam
-    
+
         let menu;
 
-        if (isPrivate){
-            menu = 
-            [
-                {
-                    icon: icon,
-                    color:"primary",
-                    name: "Sửa trạng thái tin",
-                    value: "edit-status"
-                }
-                ,
-                {
-                    icon:"trash",
-                    color:"danger",
-                    name: "Xóa bỏ tin này",
-                    value: "delete"
-                }
-                ,
-                {
-                    icon:"md-create",
-                    color:"secondary",
-                    name: "Chỉnh sửa tin này",
-                    value: "edit-content"
-                }
-            ];
+        if (isPrivate) {
+            menu =
+                [
+                    {
+                        icon: icon,
+                        color: "primary",
+                        name: "Sửa trạng thái tin",
+                        value: "edit-status"
+                    }
+                    ,
+                    {
+                        icon: "trash",
+                        color: "danger",
+                        name: "Xóa bỏ tin này",
+                        value: "delete"
+                    }
+                    ,
+                    {
+                        icon: "md-create",
+                        color: "secondary",
+                        name: "Chỉnh sửa tin này",
+                        value: "edit-content"
+                    }
+                ];
         } else {
-            menu = 
-            [
-                {
-                    icon:"md-eye-off",
-                    color:"secondary",
-                    name: "Block tin này",
-                    value: "block"
-                }
-                ,
-                {
-                    icon:"md-megaphone",
-                    color:"danger",
-                    name: "Báo cáo Spam",
-                    value: "report"
-                }
-            ];
+            menu =
+                [
+                    {
+                        icon: "md-eye-off",
+                        color: "secondary",
+                        name: "Block tin này",
+                        value: "block"
+                    }
+                    ,
+                    {
+                        icon: "md-megaphone",
+                        color: "danger",
+                        name: "Báo cáo Spam",
+                        value: "report"
+                    }
+                ];
         }
 
 
-        let popover = this.popoverCtrl.create(PopoverCard,  {form: {
-            type: "item", //icon/color/tab/item
-            menu: menu
-        }});
-      
-        popover.present({ev: ev}); //su kien lay toa do hien thi menu
+        let popover = this.popoverCtrl.create(PopoverCard, {
+            form: {
+                type: "item", //icon/color/tab/item
+                menu: menu
+            }
+        });
+
+        popover.present({ ev: ev }); //su kien lay toa do hien thi menu
 
         //this.onClickSub.emit(data);
         popover.onDidDismiss(data => {
-            if (data){
+            if (data) {
                 //console.log('Nhận dữ liệu chọn',data);
-                this.onClickSub.emit({command:data})
+                this.onClickSub.emit({ command: data })
             }
         })
 

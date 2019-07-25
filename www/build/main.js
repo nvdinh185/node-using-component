@@ -110,9 +110,9 @@ webpackEmptyAsyncContext.id = 206;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImageCardPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SocialCardPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(44);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -124,35 +124,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var ImageCardPage = /** @class */ (function () {
-    function ImageCardPage(navCtrl) {
-        this.navCtrl = navCtrl;
+var SocialCardPage = /** @class */ (function () {
+    function SocialCardPage(apiAuth) {
+        this.apiAuth = apiAuth;
+        this.userInfo = { username: 766777123 };
+        this.dynamicCards = {
+            items: []
+        };
     }
-    ImageCardPage.prototype.ngOnInit = function () {
-        this.images = [
-            {
-                alt: "Tướng Mỹ: Ông Tập đã bội hứa về quân sự hóa Biển Đông",
-                src: "https://cdn.tuoitre.vn/zoom/504_315/2019/5/30/xi-jin-ping-1559170103420282059851-crop-1559170108147453943080.jpg"
-            },
-            {
-                alt: "Gian lận thi cử: gia đình bị can nộp lại tiền, gia đình thí sinh chối",
-                src: "https://cdn.tuoitre.vn/thumb_w/586/2019/5/30/gian-lan-thi-cu-son-la-ong-yen-15592075121131686156044.png"
-            }
-        ];
+    SocialCardPage.prototype.ngOnInit = function () {
+        var _this = this;
+        setTimeout(function () {
+            console.log(_this.dynamicCards.items);
+        }, 2000);
+        this.apiAuth.getDynamicUrl('assets/data/news-info.json')
+            .then(function (res) {
+            _this.dynamicCards.items = res;
+        })
+            .catch(function (err) { return console.log(err); });
     };
-    ImageCardPage.prototype.onClickMedia = function (event) {
-        console.log(event);
+    SocialCardPage.prototype.onClickAction = function (ev, id) {
+        console.log(id, ev);
     };
-    ImageCardPage = __decorate([
+    SocialCardPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-imagecard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\imagecard\imagecard.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Home</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <image-card [imageData]="images" (onClickSub)="onClickMedia($event)"></image-card>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\imagecard\imagecard.html"*/
+            selector: 'page-socialcard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\socialcard\socialcard.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>socialcard</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngFor="let it of dynamicCards?.items">\n    <social-card [resultData]="it.results" [actionData]="it.actions" [ownerData]="userInfo" (onClickSub)="onClickAction($event,it.id)">\n    </social-card>\n  </div>\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\socialcard\socialcard.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
-    ], ImageCardPage);
-    return ImageCardPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__["a" /* ApiAuthService */]])
+    ], SocialCardPage);
+    return SocialCardPage;
 }());
 
-//# sourceMappingURL=imagecard.js.map
+//# sourceMappingURL=socialcard.js.map
 
 /***/ }),
 
@@ -235,17 +238,17 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_time_ago_pipe__ = __webpack_require__(395);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_in_app_browser_ngx__ = __webpack_require__(254);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__interceptors_requestInterceptor__ = __webpack_require__(253);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_content_card_content_card__ = __webpack_require__(680);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_image_card_image_card__ = __webpack_require__(681);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_user_card_user_card__ = __webpack_require__(682);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_content_card_content_card__ = __webpack_require__(677);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_image_card_image_card__ = __webpack_require__(678);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_user_card_user_card__ = __webpack_require__(679);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_popover_card_popover_card__ = __webpack_require__(151);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_social_card_social_card__ = __webpack_require__(685);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_imagecard_imagecard__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_contentcard_contentcard__ = __webpack_require__(396);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_social_card_social_card__ = __webpack_require__(680);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_imagecard_imagecard__ = __webpack_require__(681);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_contentcard_contentcard__ = __webpack_require__(682);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_usercard_usercard__ = __webpack_require__(683);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_socialcard_socialcard__ = __webpack_require__(684);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pipes_linkify__ = __webpack_require__(678);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pipes_new_line__ = __webpack_require__(679);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_socialcard_socialcard__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pipes_linkify__ = __webpack_require__(684);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pipes_new_line__ = __webpack_require__(685);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_apiAuthService__ = __webpack_require__(44);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -334,7 +337,7 @@ var AppModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_socialcard_socialcard__ = __webpack_require__(684);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_imagecard_imagecard__ = __webpack_require__(681);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -348,7 +351,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var MyApp = /** @class */ (function () {
     function MyApp() {
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_1__pages_socialcard_socialcard__["a" /* SocialCardPage */];
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_1__pages_imagecard_imagecard__["a" /* ImageCardPage */];
     }
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\app\app.html"*/
@@ -359,70 +362,6 @@ var MyApp = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
-/***/ 396:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContentCardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser_ngx__ = __webpack_require__(254);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var ContentCardPage = /** @class */ (function () {
-    function ContentCardPage(apiAuth, inAppBrowser) {
-        this.apiAuth = apiAuth;
-        this.inAppBrowser = inAppBrowser;
-        this.dynamicCards = {
-            items: []
-        };
-    }
-    ContentCardPage.prototype.ngOnInit = function () {
-        var _this = this;
-        setTimeout(function () {
-            console.log(_this.dynamicCards.items);
-        }, 2000);
-        this.apiAuth.getDynamicUrl('assets/data/url-info.json')
-            .then(function (res) {
-            _this.dynamicCards.items = res;
-        })
-            .catch(function (err) { return console.log(err); });
-    };
-    ContentCardPage.prototype.onClickImage = function (event) {
-        console.log('image', event);
-    };
-    ContentCardPage.prototype.onClickOpenLink = function (event) {
-        console.log('content', event);
-        if (event.link) {
-            var target = "_blank"; //mo trong inappbrowser
-            var options = "hidden=no, toolbar=yes, location=yes, presentationstyle=fullscreen, clearcache=yes, clearsessioncache=yes";
-            this.inAppBrowser.create(event.link, target, options);
-        }
-    };
-    ContentCardPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contentcard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\contentcard\contentcard.html"*/'<ion-header>\n\n\n\n</ion-header>\n\n\n\n<ion-content no-padding>\n\n    <div *ngFor="let it of dynamicCards?.items">\n\n        <div *ngIf="it.content">\n\n            <content-card [contentData]="it.content" [showDetails]="it.show_detail"\n\n                (onClickSub)="onClickOpenLink($event)" (onClickImage)="onClickImage($event)"></content-card>\n\n        </div>\n\n    </div>\n\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\contentcard\contentcard.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__["a" /* ApiAuthService */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser_ngx__["a" /* InAppBrowser */]])
-    ], ContentCardPage);
-    return ContentCardPage;
-}());
-
-//# sourceMappingURL=contentcard.js.map
 
 /***/ }),
 
@@ -507,157 +446,7 @@ var ApiAuthService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 678:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LinkifyPipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(44);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-/*
- * Converts linkify into html domain/http/ftp/email/phone
-*/
-var LinkifyPipe = /** @class */ (function () {
-    function LinkifyPipe(apiAuth) {
-        this.apiAuth = apiAuth;
-    }
-    LinkifyPipe.prototype.transform = function (value, isUrl) {
-        var _this = this;
-        var valueLinkify = value;
-        var links = [];
-        //URLs starting with http://, https://, or ftp://    
-        valueLinkify = valueLinkify.replace(/(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim, function (url) {
-            links.push(url);
-            return "<a href='" + url + "' target='_blank'>" + url + "</a>";
-        });
-        //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
-        valueLinkify = valueLinkify.replace(/([ ])([\w-]+\.[\S]+(\b|$))/gim, function (url) {
-            links.push('http://' + url.trim());
-            return " <a href='http://" + url.trim() + "' target='_blank'>" + url.trim() + "</a>";
-        });
-        //Change email addresses to mailto:: links.
-        valueLinkify = valueLinkify.replace(/(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim, function (url) {
-            links.push('mailto:' + url);
-            return "<a href='mailto:" + url + "' target='_blank'>" + url + "</a>";
-        });
-        if (isUrl === 'links')
-            return links; //array off urls
-        if (isUrl === 'urlInfos') {
-            var urlInfos_1 = [];
-            links.forEach(function (el) { return __awaiter(_this, void 0, void 0, function () {
-                var urlInfo, _a;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0:
-                            _b.trys.push([0, 2, , 3]);
-                            return [4 /*yield*/, this.apiAuth.getDynamicUrl("https://c3.mobifone.vn/api/ext-public/shot-info-url?url=" + el)];
-                        case 1:
-                            urlInfo = _b.sent();
-                            urlInfos_1.push(urlInfo);
-                            return [3 /*break*/, 3];
-                        case 2:
-                            _a = _b.sent();
-                            return [3 /*break*/, 3];
-                        case 3: return [2 /*return*/];
-                    }
-                });
-            }); });
-            return urlInfos_1;
-        }
-        return valueLinkify;
-    };
-    LinkifyPipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Pipe */])({ name: 'linkify' }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__["a" /* ApiAuthService */]])
-    ], LinkifyPipe);
-    return LinkifyPipe;
-}());
-
-//# sourceMappingURL=linkify.js.map
-
-/***/ }),
-
-/***/ 679:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewlinePipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-/*
- * Converts newlines into html breaks
-*/
-var NewlinePipe = /** @class */ (function () {
-    function NewlinePipe() {
-    }
-    NewlinePipe.prototype.transform = function (value, args) {
-        if (value)
-            value = value.replace(/(?:\r\n|\r|\n)/g, '<br />');
-        return value;
-    };
-    NewlinePipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Pipe */])({ name: 'newline' })
-    ], NewlinePipe);
-    return NewlinePipe;
-}());
-
-//# sourceMappingURL=new-line.js.map
-
-/***/ }),
-
-/***/ 680:
+/***/ 677:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -731,7 +520,7 @@ var ContentCard = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 681:
+/***/ 678:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -785,7 +574,7 @@ var ImageCard = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 682:
+/***/ 679:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -877,10 +666,12 @@ var UserCard = /** @class */ (function () {
                     }
                 ];
         }
-        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_1__popover_card_popover_card__["a" /* PopoverCard */], { form: {
+        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_1__popover_card_popover_card__["a" /* PopoverCard */], {
+            form: {
                 type: "item",
                 menu: menu
-            } });
+            }
+        });
         popover.present({ ev: ev }); //su kien lay toa do hien thi menu
         //this.onClickSub.emit(data);
         popover.onDidDismiss(function (data) {
@@ -908,130 +699,19 @@ var UserCard = /** @class */ (function () {
     ], UserCard.prototype, "onClickSub", void 0);
     UserCard = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'user-card',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\components\user-card\user-card.html"*/'<!-- userData cần phải chứa .username == username, .id, .time là thời gian của tin tức -->\n\n<ion-item  *ngIf="userData">\n\n    <!-- Cần truyền thêm ownerData = userInfo là username được login vào -->\n\n    <ion-avatar item-start *ngIf="ownerData?.username===userData.username">\n\n        <img *ngIf="ownerData?.data?.image" [src]="ownerData?.data?.image">\n\n        <img *ngIf="!(ownerData?.data?.image)" src="assets/imgs/no-image-go.jpg">\n\n    </ion-avatar>\n\n    <ion-title *ngIf="ownerData?.username===userData.username">{{ownerData?.data?.fullname?ownerData?.data?.fullname:ownerData?.username}}</ion-title>\n\n    <!-- Cần phải truyền cho form danh danh bạ chứa thông tin người dùng -->\n\n    <ion-avatar item-start *ngIf="ownerData?.username!==userData.username">\n\n        <img *ngIf="contactData[userData.username]&&contactData[userData.username].avatar" [src]="contactData[userData.username].avatar">\n\n        <img *ngIf="!(contactData[userData.username]&&contactData[userData.username].avatar)" src="assets/imgs/no-image-go.jpg">\n\n    </ion-avatar>\n\n    <ion-title *ngIf="ownerData?.username!==userData.username">{{contactData[userData.username]&&contactData[userData.username].fullname?contactData[userData.username].fullname:userData.username}}</ion-title>\n\n    <!-- Tin tức được post lên thời gian nào -->\n\n    <ion-note style="color: gray">\n\n        {{userData.time | timeAgo}}\n\n        <ion-icon name="{{(statusIcon[userData.status]?statusIcon[userData.status]:\'md-globe\')}}"></ion-icon>\n\n    </ion-note>\n\n    <!-- nút more infor sẽ hiển thị thông tin của username này lên, bằng backgroud, ảnh đại diện, tên hiển thị -->\n\n    <button item-end icon-only ion-button clear small color="primary" (click)="onClickMore($event,ownerData?.username===userData.username,(statusIcon[userData.status]?statusIcon[userData.status]:\'md-globe\'))">\n\n        <ion-icon name="more"></ion-icon>\n\n    </button>\n\n</ion-item>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\components\user-card\user-card.html"*/
+            selector: 'user-card',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\components\user-card\user-card.html"*/'<!-- userData cần phải chứa .username == username, .id, .time là thời gian của tin tức -->\n\n<ion-item *ngIf="userData">\n\n    <!-- Cần truyền thêm ownerData = userInfo là username được login vào -->\n\n    <!-- Nếu là user đăng nhập -->\n\n    <ion-avatar item-start *ngIf="ownerData?.username===userData.username">\n\n        <!-- Nếu có avatar trong thông tin userInfo thì lấy ảnh đó làm avatar -->\n\n        <img *ngIf="ownerData?.data?.image" [src]="ownerData?.data?.image">\n\n        <!-- Nếu không có avatar trong thông tin userInfo thì lấy ảnh trong thư viện ảnh -->\n\n        <img *ngIf="!(ownerData?.data?.image)" src="assets/imgs/no-image-go.jpg">\n\n    </ion-avatar>\n\n    <!-- Nếu có fullname trong userInfo thì lấy, nếu không thì lấy username trong userInfo -->\n\n    <ion-title *ngIf="ownerData?.username===userData.username">\n\n        {{ownerData?.data?.fullname?ownerData?.data?.fullname:ownerData?.username}}</ion-title>\n\n    <!-- Cần phải truyền cho form danh bạ chứa thông tin người dùng -->\n\n    <ion-avatar item-start *ngIf="ownerData?.username!==userData.username">\n\n        <!-- Nếu có avatar trong contactData thì lấy ảnh đó làm avatar -->\n\n        <img *ngIf="contactData[userData.username]&&contactData[userData.username].avatar"\n\n            [src]="contactData[userData.username].avatar">\n\n        <!-- Nếu không có avatar trong contactData thì lấy ảnh trong thư viện ảnh -->\n\n        <img *ngIf="!(contactData[userData.username]&&contactData[userData.username].avatar)"\n\n            src="assets/imgs/no-image-go.jpg">\n\n    </ion-avatar>\n\n    <!-- Nếu có fullname trong contactData thì lấy, nếu không thì lấy username trong bản tin -->\n\n    <ion-title *ngIf="ownerData?.username!==userData.username">\n\n        {{contactData[userData.username]&&contactData[userData.username].fullname?contactData[userData.username].fullname:userData.username}}\n\n    </ion-title>\n\n    <!-- Tin tức được post lên thời gian nào -->\n\n    <ion-note style="color: gray">\n\n        {{userData.time | timeAgo}}\n\n        <ion-icon name="{{(statusIcon[userData.status]?statusIcon[userData.status]:\'md-globe\')}}"></ion-icon>\n\n    </ion-note>\n\n    <!-- nút more infor sẽ hiển thị thông tin của username này lên, bằng backgroud, ảnh đại diện, tên hiển thị -->\n\n    <button item-end icon-only ion-button clear small color="primary"\n\n        (click)="onClickMore($event,ownerData?.username===userData.username,(statusIcon[userData.status]?statusIcon[userData.status]:\'md-globe\'))">\n\n        <ion-icon name="more"></ion-icon>\n\n    </button>\n\n</ion-item>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\components\user-card\user-card.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* PopoverController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* PopoverController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* PopoverController */]) === "function" && _a || Object])
     ], UserCard);
     return UserCard;
+    var _a;
 }());
 
 //# sourceMappingURL=user-card.js.map
 
 /***/ }),
 
-/***/ 683:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserCardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__ = __webpack_require__(44);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var UserCardPage = /** @class */ (function () {
-    function UserCardPage(apiAuth, navCtrl, navParams) {
-        this.apiAuth = apiAuth;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.dynamicCards = {
-            items: []
-        };
-    }
-    UserCardPage.prototype.ngOnInit = function () {
-        var _this = this;
-        setTimeout(function () {
-            console.log(_this.dynamicCards.items);
-        }, 2000);
-        this.apiAuth.getDynamicUrl('assets/data/news-info.json')
-            .then(function (res) {
-            _this.dynamicCards.items = res;
-        })
-            .catch(function (err) { return console.log(err); });
-        this.contacts = { 903500888: { fullname: "Cuong Test", avatar: "data:image/png;base64,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" } };
-        this.userInfo = { username: "766777123", data: { fullname: "Nguyen Van Dinh", image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEA0lEQVRYR+2Wa1DUVRjGf2e5LIiLLigYlxC1HDSwoFEZxy4DFB+sD32IDzVNEYxOM02GWkyNQ30oyJmiqUxKMf1AJtk46mjNlEpeUsrABCOMUO7FRRkWcWGXPc05fzbI2OXmjH3g7M7O7tlz3vOc532f5/2L9NIUyW0cYhrANAP/ewYkEvVWH0IIhn+PIh2h5gTIIWEJgXp5G2OqQOpgbqV6DzZ80PB6BXpSAIyDIcA3gPvCkkmYk0ig30w95ymkZgeB3dlHdVclFX+doc9xXW/wxIRHBlxIQsyh5K7IJyIoBpccpNfRQ7D/bJ2K0YYCMOC0MyhdBPoF0dHXRn55Lu19bZiEadQ9XlOQl1zIQmuczmlZ0zcUVxVSnH4Ifx+zURNDXLjZQgg2lWXqW29N/QL1u9XWQO7JdSPS+G8cHgEkhq9kfWKeDqKYPVJfyue12yl+5CBm3wCEZnuICSmR+rvkdPNR7M4bpMSsMXIl4dML73Gq5duJMfDMkhdIm/8YZ9pOUFRZgAuVFHVrH2b6W9iWsvcfANfsXeSUPUvyHQ+SnbBBn/vR+XyqOiooSvuSyo6zFJ57c2IAMu95iYei0+kftNNku8zp5mN813iQ11ZsISQwjHlBEW51MiidHG88zLK5y7EGhOBwOWntbaK1t5HVUWlUd1aw5afXJwZgdWQa2Qk5xiYhONpwmF3VH7Dj0QOYdQ1Al70Tp2uA8BkRRj0IyaayLGyOHrallhp6EZI9NTv4+vJXEwPgZ/Kj4IHtzA2cp1PtdDn0raItse7UUvjzG/Q6bGxe+a4GIAVcaD/HgKuf+8NX6QLo7r/KxrJMPTfa8CrDxdalvJyUh8V/1pDClSBc+maH6vdS+ttOHXPNwgwyFj8HwqSL0/AD6HNe5+Pz7/BLezliMjJUQWaZrTwdt5aY4EX4mEz0DPSwr3aXzqs7qEu6uGt2HE8tWUewBitptl2hpOYTOm+0T84J3btUMGWKhuCGLVbiwiR89KwyqZudzlDpLegF6lBFuuFj4+sFRsNSqG8BAOVySsufVX/Ij3+e9Eqn+08f4UtR2j7eOruRKz11U0yBlGTEPU9SWDKvfJ8NDCKGqP9PZOWIwNplG4gOXsDmUy96tGD33rHbMRKrOZTCh3ez//cSDtTt8diMlFsq/8iKX8/b5a9y6epFj2snBEAtXhp6L7nLCzjWeIT9dSV093fpmtStQsIMPwuPL3qS9PlPsLP6fU40G94/5QeSkWqIDIomKz6HBda7qemsosH2B0qCUZYY4uck0WJrYPevW7l07eKYB4+bgZEA9I2kJMoSy6rIVO4MjtVe0NLbwA8tx6nvrjWWe3kAubluxqyBcZX9FBZNA5hm4LYz8DdKfcmwal+kKAAAAABJRU5ErkJggg==" } };
-    };
-    UserCardPage.prototype.onClickMore = function (ev, id) {
-        console.log(id, ev);
-    };
-    UserCardPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-usercard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\usercard\usercard.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>usercard</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngFor="let it of dynamicCards?.items">\n    <user-card [userData]="it" [ownerData]="userInfo" [contactData]="contacts" (onClickSub)="onClickMore($event,it.id)">\n    </user-card>\n  </div>\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\usercard\usercard.html"*/,
-        }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _c || Object])
-    ], UserCardPage);
-    return UserCardPage;
-    var _a, _b, _c;
-}());
-
-//# sourceMappingURL=usercard.js.map
-
-/***/ }),
-
-/***/ 684:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SocialCardPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(44);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var SocialCardPage = /** @class */ (function () {
-    function SocialCardPage(apiAuth) {
-        this.apiAuth = apiAuth;
-        this.userInfo = { username: 766777123 };
-        this.dynamicCards = {
-            items: []
-        };
-    }
-    SocialCardPage.prototype.ngOnInit = function () {
-        var _this = this;
-        setTimeout(function () {
-            console.log(_this.dynamicCards.items);
-        }, 2000);
-        this.apiAuth.getDynamicUrl('assets/data/news-info.json')
-            .then(function (res) {
-            _this.dynamicCards.items = res;
-        })
-            .catch(function (err) { return console.log(err); });
-    };
-    SocialCardPage.prototype.onClickAction = function (ev, id) {
-        console.log(id, ev);
-    };
-    SocialCardPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-socialcard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\socialcard\socialcard.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>socialcard</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngFor="let it of dynamicCards?.items">\n    <social-card [resultData]="it.results" [actionData]="it.actions" [ownerData]="userInfo" (onClickSub)="onClickAction($event,it.id)">\n    </social-card>\n  </div>\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\socialcard\socialcard.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__["a" /* ApiAuthService */]])
-    ], SocialCardPage);
-    return SocialCardPage;
-}());
-
-//# sourceMappingURL=socialcard.js.map
-
-/***/ }),
-
-/***/ 685:
+/***/ 680:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1162,6 +842,332 @@ var SocialCard = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=social-card.js.map
+
+/***/ }),
+
+/***/ 681:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImageCardPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ImageCardPage = /** @class */ (function () {
+    function ImageCardPage(navCtrl) {
+        this.navCtrl = navCtrl;
+    }
+    ImageCardPage.prototype.ngOnInit = function () {
+        this.images = [
+            {
+                title: "Tướng Mỹ: Ông Tập đã bội hứa về quân sự hóa Biển Đông",
+                src: "https://cdn.tuoitre.vn/zoom/504_315/2019/5/30/xi-jin-ping-1559170103420282059851-crop-1559170108147453943080.jpg",
+                file_date: new Date()
+            },
+            {
+                title: "Gian lận thi cử: gia đình bị can nộp lại tiền, gia đình thí sinh chối",
+                src: "https://cdn.tuoitre.vn/thumb_w/586/2019/5/30/gian-lan-thi-cu-son-la-ong-yen-15592075121131686156044.png",
+                file_date: new Date()
+            }
+        ];
+    };
+    ImageCardPage.prototype.onClickMedia = function (event) {
+        console.log(event);
+    };
+    ImageCardPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-imagecard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\imagecard\imagecard.html"*/'<ion-header>\n\n  <ion-navbar>\n\n    <ion-title>Home</ion-title>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n  <image-card [imageData]="images" (onClickSub)="onClickMedia($event)"></image-card>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\imagecard\imagecard.html"*/
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object])
+    ], ImageCardPage);
+    return ImageCardPage;
+    var _a;
+}());
+
+//# sourceMappingURL=imagecard.js.map
+
+/***/ }),
+
+/***/ 682:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContentCardPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser_ngx__ = __webpack_require__(254);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ContentCardPage = /** @class */ (function () {
+    function ContentCardPage(apiAuth, inAppBrowser) {
+        this.apiAuth = apiAuth;
+        this.inAppBrowser = inAppBrowser;
+        this.dynamicCards = {
+            items: []
+        };
+    }
+    ContentCardPage.prototype.ngOnInit = function () {
+        var _this = this;
+        setTimeout(function () {
+            console.log(_this.dynamicCards.items);
+        }, 2000);
+        this.apiAuth.getDynamicUrl('assets/data/url-info.json')
+            .then(function (res) {
+            _this.dynamicCards.items = res;
+        })
+            .catch(function (err) { return console.log(err); });
+    };
+    ContentCardPage.prototype.onClickImage = function (event) {
+        console.log('image', event);
+    };
+    ContentCardPage.prototype.onClickOpenLink = function (event) {
+        console.log('content', event);
+        if (event.link) {
+            var target = "_blank"; //mo trong inappbrowser
+            var options = "hidden=no, toolbar=yes, location=yes, presentationstyle=fullscreen, clearcache=yes, clearsessioncache=yes";
+            this.inAppBrowser.create(event.link, target, options);
+        }
+    };
+    ContentCardPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-contentcard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\contentcard\contentcard.html"*/'<ion-header>\n\n\n\n</ion-header>\n\n\n\n<ion-content no-padding>\n\n    <div *ngFor="let it of dynamicCards?.items">\n\n        <div *ngIf="it.content">\n\n            <content-card [contentData]="it.content" [showDetails]="it.show_detail"\n\n                (onClickSub)="onClickOpenLink($event)" (onClickImage)="onClickImage($event)"></content-card>\n\n        </div>\n\n    </div>\n\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\contentcard\contentcard.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__["a" /* ApiAuthService */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser_ngx__["a" /* InAppBrowser */]])
+    ], ContentCardPage);
+    return ContentCardPage;
+}());
+
+//# sourceMappingURL=contentcard.js.map
+
+/***/ }),
+
+/***/ 683:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserCardPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__ = __webpack_require__(44);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var UserCardPage = /** @class */ (function () {
+    function UserCardPage(apiAuth, navCtrl, navParams) {
+        this.apiAuth = apiAuth;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.dynamicCards = {
+            items: []
+        };
+    }
+    UserCardPage.prototype.ngOnInit = function () {
+        var _this = this;
+        setTimeout(function () {
+            console.log(_this.dynamicCards.items);
+        }, 2000);
+        this.apiAuth.getDynamicUrl('assets/data/news-info.json')
+            .then(function (res) {
+            _this.dynamicCards.items = res;
+        })
+            .catch(function (err) { return console.log(err); });
+        this.contacts = { 903500888: { fullname: "Cuong Test", avatar: "data:image/png;base64,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" } };
+        this.userInfo = { username: "766777123", data: { fullname: "Nguyen Van Dinh", image: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAEA0lEQVRYR+2Wa1DUVRjGf2e5LIiLLigYlxC1HDSwoFEZxy4DFB+sD32IDzVNEYxOM02GWkyNQ30oyJmiqUxKMf1AJtk46mjNlEpeUsrABCOMUO7FRRkWcWGXPc05fzbI2OXmjH3g7M7O7tlz3vOc532f5/2L9NIUyW0cYhrANAP/ewYkEvVWH0IIhn+PIh2h5gTIIWEJgXp5G2OqQOpgbqV6DzZ80PB6BXpSAIyDIcA3gPvCkkmYk0ig30w95ymkZgeB3dlHdVclFX+doc9xXW/wxIRHBlxIQsyh5K7IJyIoBpccpNfRQ7D/bJ2K0YYCMOC0MyhdBPoF0dHXRn55Lu19bZiEadQ9XlOQl1zIQmuczmlZ0zcUVxVSnH4Ifx+zURNDXLjZQgg2lWXqW29N/QL1u9XWQO7JdSPS+G8cHgEkhq9kfWKeDqKYPVJfyue12yl+5CBm3wCEZnuICSmR+rvkdPNR7M4bpMSsMXIl4dML73Gq5duJMfDMkhdIm/8YZ9pOUFRZgAuVFHVrH2b6W9iWsvcfANfsXeSUPUvyHQ+SnbBBn/vR+XyqOiooSvuSyo6zFJ57c2IAMu95iYei0+kftNNku8zp5mN813iQ11ZsISQwjHlBEW51MiidHG88zLK5y7EGhOBwOWntbaK1t5HVUWlUd1aw5afXJwZgdWQa2Qk5xiYhONpwmF3VH7Dj0QOYdQ1Al70Tp2uA8BkRRj0IyaayLGyOHrallhp6EZI9NTv4+vJXEwPgZ/Kj4IHtzA2cp1PtdDn0raItse7UUvjzG/Q6bGxe+a4GIAVcaD/HgKuf+8NX6QLo7r/KxrJMPTfa8CrDxdalvJyUh8V/1pDClSBc+maH6vdS+ttOHXPNwgwyFj8HwqSL0/AD6HNe5+Pz7/BLezliMjJUQWaZrTwdt5aY4EX4mEz0DPSwr3aXzqs7qEu6uGt2HE8tWUewBitptl2hpOYTOm+0T84J3btUMGWKhuCGLVbiwiR89KwyqZudzlDpLegF6lBFuuFj4+sFRsNSqG8BAOVySsufVX/Ij3+e9Eqn+08f4UtR2j7eOruRKz11U0yBlGTEPU9SWDKvfJ8NDCKGqP9PZOWIwNplG4gOXsDmUy96tGD33rHbMRKrOZTCh3ez//cSDtTt8diMlFsq/8iKX8/b5a9y6epFj2snBEAtXhp6L7nLCzjWeIT9dSV093fpmtStQsIMPwuPL3qS9PlPsLP6fU40G94/5QeSkWqIDIomKz6HBda7qemsosH2B0qCUZYY4uck0WJrYPevW7l07eKYB4+bgZEA9I2kJMoSy6rIVO4MjtVe0NLbwA8tx6nvrjWWe3kAubluxqyBcZX9FBZNA5hm4LYz8DdKfcmwal+kKAAAAABJRU5ErkJggg==" } };
+    };
+    UserCardPage.prototype.onClickMore = function (ev, id) {
+        console.log(id, ev);
+    };
+    UserCardPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-usercard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\usercard\usercard.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>usercard</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div *ngFor="let it of dynamicCards?.items">\n    <user-card [userData]="it" [ownerData]="userInfo" [contactData]="contacts" (onClickSub)="onClickMore($event,it.id)">\n    </user-card>\n  </div>\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\usercard\usercard.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_apiAuthService__["a" /* ApiAuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _c || Object])
+    ], UserCardPage);
+    return UserCardPage;
+    var _a, _b, _c;
+}());
+
+//# sourceMappingURL=usercard.js.map
+
+/***/ }),
+
+/***/ 684:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LinkifyPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__ = __webpack_require__(44);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+/*
+ * Converts linkify into html domain/http/ftp/email/phone
+*/
+var LinkifyPipe = /** @class */ (function () {
+    function LinkifyPipe(apiAuth) {
+        this.apiAuth = apiAuth;
+    }
+    LinkifyPipe.prototype.transform = function (value, isUrl) {
+        var _this = this;
+        var valueLinkify = value;
+        var links = [];
+        //URLs starting with http://, https://, or ftp://    
+        valueLinkify = valueLinkify.replace(/(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim, function (url) {
+            links.push(url);
+            return "<a href='" + url + "' target='_blank'>" + url + "</a>";
+        });
+        //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
+        valueLinkify = valueLinkify.replace(/([ ])([\w-]+\.[\S]+(\b|$))/gim, function (url) {
+            links.push('http://' + url.trim());
+            return " <a href='http://" + url.trim() + "' target='_blank'>" + url.trim() + "</a>";
+        });
+        //Change email addresses to mailto:: links.
+        valueLinkify = valueLinkify.replace(/(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim, function (url) {
+            links.push('mailto:' + url);
+            return "<a href='mailto:" + url + "' target='_blank'>" + url + "</a>";
+        });
+        if (isUrl === 'links')
+            return links; //array off urls
+        if (isUrl === 'urlInfos') {
+            var urlInfos_1 = [];
+            links.forEach(function (el) { return __awaiter(_this, void 0, void 0, function () {
+                var urlInfo, _a;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            _b.trys.push([0, 2, , 3]);
+                            return [4 /*yield*/, this.apiAuth.getDynamicUrl("https://c3.mobifone.vn/api/ext-public/shot-info-url?url=" + el)];
+                        case 1:
+                            urlInfo = _b.sent();
+                            urlInfos_1.push(urlInfo);
+                            return [3 /*break*/, 3];
+                        case 2:
+                            _a = _b.sent();
+                            return [3 /*break*/, 3];
+                        case 3: return [2 /*return*/];
+                    }
+                });
+            }); });
+            return urlInfos_1;
+        }
+        return valueLinkify;
+    };
+    LinkifyPipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Pipe */])({ name: 'linkify' }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__["a" /* ApiAuthService */]])
+    ], LinkifyPipe);
+    return LinkifyPipe;
+}());
+
+//# sourceMappingURL=linkify.js.map
+
+/***/ }),
+
+/***/ 685:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewlinePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+/*
+ * Converts newlines into html breaks
+*/
+var NewlinePipe = /** @class */ (function () {
+    function NewlinePipe() {
+    }
+    NewlinePipe.prototype.transform = function (value, args) {
+        if (value)
+            value = value.replace(/(?:\r\n|\r|\n)/g, '<br />');
+        return value;
+    };
+    NewlinePipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Pipe */])({ name: 'newline' })
+    ], NewlinePipe);
+    return NewlinePipe;
+}());
+
+//# sourceMappingURL=new-line.js.map
 
 /***/ })
 
