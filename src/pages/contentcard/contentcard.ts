@@ -26,10 +26,18 @@ export class ContentCardPage {
     items: []
   }
 
+  /**
+   * Nhận giá trị của component trả về và log ra xem
+   * @param event 
+   */
   onClickImage(event) {
     console.log('image', event);
   }
 
+  /**
+   * Nhận url của component trả về và mở trình duyệt để truy cập web
+   * @param event 
+   */
   onClickOpenLink(event) {
     console.log('content', event);
     if (event.link) {

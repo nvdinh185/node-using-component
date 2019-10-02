@@ -145,9 +145,17 @@ var ContentCardPage = /** @class */ (function () {
         })
             .catch(function (err) { return console.log(err); });
     };
+    /**
+     * Nhận giá trị của component trả về và log ra xem
+     * @param event
+     */
     ContentCardPage.prototype.onClickImage = function (event) {
         console.log('image', event);
     };
+    /**
+     * Nhận url của component trả về và mở trình duyệt để truy cập web
+     * @param event
+     */
     ContentCardPage.prototype.onClickOpenLink = function (event) {
         console.log('content', event);
         if (event.link) {
@@ -160,10 +168,10 @@ var ContentCardPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-contentcard',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\contentcard\contentcard.html"*/'<ion-header>\n\n\n\n</ion-header>\n\n\n\n<ion-content no-padding>\n\n    <div *ngFor="let it of dynamicCards?.items">\n\n        <div *ngIf="it.content">\n\n            <content-card [contentData]="it.content" (onClickSub)="onClickOpenLink($event)" (onClickImage)="onClickImage($event)"></content-card>\n\n        </div>\n\n    </div>\n\n</ion-content>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\pages\contentcard\contentcard.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__["a" /* ApiAuthService */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser_ngx__["a" /* InAppBrowser */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__["a" /* ApiAuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_apiAuthService__["a" /* ApiAuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser_ngx__["a" /* InAppBrowser */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser_ngx__["a" /* InAppBrowser */]) === "function" && _b || Object])
     ], ContentCardPage);
     return ContentCardPage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=contentcard.js.map
@@ -346,7 +354,7 @@ var ApiAuthService = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_contentcard_contentcard__ = __webpack_require__(342);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pages_imagecard_imagecard__ = __webpack_require__(678);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -360,7 +368,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var MyApp = /** @class */ (function () {
     function MyApp() {
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_1__pages_contentcard_contentcard__["a" /* ContentCardPage */];
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_1__pages_imagecard_imagecard__["a" /* ImageCardPage */];
     }
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\app\app.html"*/
@@ -396,15 +404,26 @@ var ContentCard = /** @class */ (function () {
         this.onClickImage = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* EventEmitter */]();
         this.maxCharacter = 500; //số ký tự một lần hiển thị ra
     }
-    ContentCard.prototype.ngOnInit = function () {
-        console.log(this.contentData);
-    };
+    /**
+     * Khi kích vào link nào thì trả url lại cho trang gốc
+     * @param link
+     */
     ContentCard.prototype.onClickItem = function (link) {
         this.onClickSub.emit({ link: link });
     };
+    /**
+     * Khi kích vào một ảnh trong tin thì chạy hàm này
+     * Trả về id và danh sách ảnh cho trang gốc
+     * @param event
+     */
     ContentCard.prototype.onClickMedia = function (event) {
         this.onClickImage.emit(event);
     };
+    /**
+     * Mỗi khi bấm nút đọc thêm thì tăng giá trị thuộc tính is_readmore
+     * lên 500 ký tự, để lấy thêm 500 ký tự tiếp theo trong nội dung
+     * @param obj
+     */
     ContentCard.prototype.readMore = function (obj) {
         obj.is_readmore = (!obj.is_readmore ? this.maxCharacter : obj.is_readmore) + this.maxCharacter;
     };
@@ -422,7 +441,7 @@ var ContentCard = /** @class */ (function () {
     ], ContentCard.prototype, "onClickImage", void 0);
     ContentCard = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'content-card',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\components\content-card\content-card.html"*/'<div *ngIf="contentData">\n\n    <!-- Hiển thị tiêu đề của bản tin -->\n\n    <p text-wrap [innerHtml]="contentData | linkify"></p>\n\n\n\n    <!-- Hiển thị nội dung bản tin -->\n\n    <div *ngIf="(contentData | linkify:\'urlInfos\')?.length>0">\n\n        <div *ngFor="let urlInfo of contentData | linkify:\'urlInfos\'; let idx = index;">\n\n            <div *ngIf="idx===0">\n\n                <ion-row no-padding>\n\n                    <ion-col no-padding col-12>\n\n                        <strong *ngIf="urlInfo.hostname">\n\n                            {{urlInfo.hostname}}\n\n                        </strong>\n\n                        <p text-wrap>\n\n                            <strong *ngIf="urlInfo.title">\n\n                                {{urlInfo.title}}\n\n                            </strong>\n\n                        </p>\n\n                        <p text-wrap\n\n                            [innerHtml]="(urlInfo.content | newline | slice:0:(!urlInfo.is_readmore?maxCharacter:urlInfo.is_readmore)) + ((urlInfo.content | newline)?.length>(!urlInfo.is_readmore?maxCharacter:urlInfo.is_readmore)?\'•••\':\'\')">\n\n                        </p>\n\n                        <div\n\n                            *ngIf="(urlInfo.content | newline)?.length>(!urlInfo.is_readmore?maxCharacter:urlInfo.is_readmore)">\n\n                            <ion-note style="color: rgb(36, 93, 250)" tappable (click)="readMore(urlInfo)">đọc thêm\n\n                            </ion-note>\n\n                        </div>\n\n                    </ion-col>\n\n                    <ion-col no-padding col-12 *ngIf="urlInfo.images && urlInfo.images.length>0"\n\n                        class="background-height">\n\n                        <image-card [imageData]="urlInfo.images" (onClickSub)="onClickMedia($event)"></image-card>\n\n                    </ion-col>\n\n                </ion-row>\n\n            </div>\n\n        </div>\n\n    </div>\n\n\n\n    <!-- Hiển thị các link cho nút bấm inappBrowser sử dụng trong app trên ios và android -->\n\n    <ion-buttons *ngIf="(contentData | linkify:\'links\')?.length>0">\n\n        <button *ngFor="let url of contentData | linkify:\'links\'; let idx = index;" ion-button round outline\n\n            (click)="onClickItem(url)">\n\n            Xem link {{(idx + 1)}}\n\n        </button>\n\n    </ion-buttons>\n\n\n\n</div>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\components\content-card\content-card.html"*/
+            selector: 'content-card',template:/*ion-inline-start:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\components\content-card\content-card.html"*/'<div *ngIf="contentData">\n\n    <!-- Hiển thị tiêu đề của bản tin -->\n\n    <p text-wrap [innerHtml]="contentData | linkify"></p>\n\n\n\n    <!-- Hiển thị nội dung bản tin -->\n\n    <div *ngIf="(contentData | linkify:\'urlInfos\')?.length>0">\n\n        <div *ngFor="let urlInfo of contentData | linkify:\'urlInfos\'; let idx = index;">\n\n            <!-- Vì mảng (contentData | linkify:\'urlInfos\') chỉ có 1 phần tử nên lấy phần tử thứ 0 -->\n\n            <div *ngIf="idx===0">\n\n                <ion-row no-padding>\n\n                    <!-- Hiển thị nội dung thông tin có trong link -->\n\n                    <ion-col no-padding col-12>\n\n                        <!-- Hiển thị hostname -->\n\n                        <strong *ngIf="urlInfo.hostname">\n\n                            {{ urlInfo.hostname }}\n\n                        </strong>\n\n                        <!-- Hiển thị title -->\n\n                        <p text-wrap>\n\n                            <strong *ngIf="urlInfo.title">\n\n                                {{ urlInfo.title }}\n\n                            </strong>\n\n                        </p>\n\n                        <!-- \n\n                            Hiển thị nội dung:\n\n                            - Ban đầu:  + hiển thị từ 0 - 500 ký tự\n\n                                        + Nếu chiều dài nội dung hơn 500 ký tự thì hiện tiếp dấu 3 chấm\n\n                            - Sau khi bấm nút \'đọc thêm\':\n\n                                        + hiển thị thêm 500 ký tự tiếp theo (giá trị is_readmore tăng thêm 500)\n\n                                        + Nếu chiều dài nội dung vẫn lớn hơn is_readmore thì hiện tiếp dấu 3 chấm\n\n                        -->\n\n                        <p text-wrap\n\n                            [innerHtml]="(urlInfo.content | newline | slice:0:(!urlInfo.is_readmore?maxCharacter:urlInfo.is_readmore)) + ((urlInfo.content | newline)?.length > (!urlInfo.is_readmore?maxCharacter:urlInfo.is_readmore)?\'•••\':\'\')">\n\n                        </p>\n\n\n\n                        <!-- \n\n                            Hiển thị nút đọc thêm:\n\n                            - Ban đầu: Nếu chiều dài của nội dung nhiều hơn 500\n\n                            ký tự thì hiển thị nút đọc thêm\n\n                            - Sau khi bấm nút \'đọc thêm\': giá trị is_readmore tăng thêm 500\n\n                            Nếu chiều dài của nội dung vẫn dài hơn is_readmore thì vẫn hiện nút \'đọc thêm\'\n\n                        -->\n\n                        <div\n\n                            *ngIf="(urlInfo.content | newline)?.length > (!urlInfo.is_readmore?maxCharacter:urlInfo.is_readmore)">\n\n                            <ion-note style="color: rgb(36, 93, 250)" tappable (click)="readMore(urlInfo)">đọc thêm\n\n                            </ion-note>\n\n                        </div>\n\n                    </ion-col>\n\n                    <!-- \n\n                        Hiển thị các hình ảnh trong link\n\n                        Sử dụng component <image-card> đã tạo ra trước đó\n\n                    -->\n\n                    <ion-col no-padding col-12 *ngIf="urlInfo.images && urlInfo.images.length>0"\n\n                        class="background-height">\n\n                        <image-card [imageData]="urlInfo.images" (onClickSub)="onClickMedia($event)"></image-card>\n\n                    </ion-col>\n\n                </ion-row>\n\n            </div>\n\n        </div>\n\n    </div>\n\n\n\n    <!-- Hiển thị các link trong nội dung tin, mỗi link có một nút bấm để xem -->\n\n    <ion-buttons *ngIf="(contentData | linkify:\'links\')?.length>0">\n\n        <button *ngFor="let url of contentData | linkify:\'links\'; let idx = index;" ion-button round outline\n\n            (click)="onClickItem(url)">\n\n            Xem link {{(idx + 1)}}\n\n        </button>\n\n    </ion-buttons>\n\n\n\n</div>'/*ion-inline-end:"D:\DINHNV\MyData\LapTrinhDiDong\NODE_Baitap\node-quan-ly-nha-tram\using-component\src\components\content-card\content-card.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], ContentCard);

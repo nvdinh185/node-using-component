@@ -8,7 +8,7 @@ import { SocialCardPage } from '../pages/socialcard/socialcard';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = ContentCardPage;
+  rootPage:any = ImageCardPage;
 
   constructor() {}
 }

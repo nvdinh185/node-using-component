@@ -5,26 +5,50 @@
     <!-- Hiển thị nội dung bản tin -->
     <div *ngIf="(contentData | linkify:'urlInfos')?.length>0">
         <div *ngFor="let urlInfo of contentData | linkify:'urlInfos'; let idx = index;">
+            <!-- Vì mảng (contentData | linkify:'urlInfos') chỉ có 1 phần tử nên lấy phần tử thứ 0 -->
             <div *ngIf="idx===0">
                 <ion-row no-padding>
+                    <!-- Hiển thị nội dung thông tin có trong link -->
                     <ion-col no-padding col-12>
+                        <!-- Hiển thị hostname -->
                         <strong *ngIf="urlInfo.hostname">
-                            {{urlInfo.hostname}}
+                            {{ urlInfo.hostname }}
                         </strong>
+                        <!-- Hiển thị title -->
                         <p text-wrap>
                             <strong *ngIf="urlInfo.title">
-                                {{urlInfo.title}}
+                                {{ urlInfo.title }}
                             </strong>
                         </p>
+                        <!-- 
+                            Hiển thị nội dung:
+                            - Ban đầu:  + hiển thị từ 0 - 500 ký tự
+                                        + Nếu chiều dài nội dung hơn 500 ký tự thì hiện tiếp dấu 3 chấm
+                            - Sau khi bấm nút 'đọc thêm':
+                                        + hiển thị thêm 500 ký tự tiếp theo (giá trị is_readmore tăng thêm 500)
+                                        + Nếu chiều dài nội dung vẫn lớn hơn is_readmore thì hiện tiếp dấu 3 chấm
+                        -->
                         <p text-wrap
-                            [innerHtml]="(urlInfo.content | newline | slice:0:(!urlInfo.is_readmore?maxCharacter:urlInfo.is_readmore)) + ((urlInfo.content | newline)?.length>(!urlInfo.is_readmore?maxCharacter:urlInfo.is_readmore)?'•••':'')">
+                            [innerHtml]="(urlInfo.content | newline | slice:0:(!urlInfo.is_readmore?maxCharacter:urlInfo.is_readmore)) + ((urlInfo.content | newline)?.length > (!urlInfo.is_readmore?maxCharacter:urlInfo.is_readmore)?'•••':'')">
                         </p>
+
+                        <!-- 
+                            Hiển thị nút đọc thêm:
+                            - Ban đầu: Nếu chiều dài của nội dung nhiều hơn 500
+                            ký tự thì hiển thị nút đọc thêm
+                            - Sau khi bấm nút 'đọc thêm': giá trị is_readmore tăng thêm 500
+                            Nếu chiều dài của nội dung vẫn dài hơn is_readmore thì vẫn hiện nút 'đọc thêm'
+                        -->
                         <div
-                            *ngIf="(urlInfo.content | newline)?.length>(!urlInfo.is_readmore?maxCharacter:urlInfo.is_readmore)">
+                            *ngIf="(urlInfo.content | newline)?.length > (!urlInfo.is_readmore?maxCharacter:urlInfo.is_readmore)">
                             <ion-note style="color: rgb(36, 93, 250)" tappable (click)="readMore(urlInfo)">đọc thêm
                             </ion-note>
                         </div>
                     </ion-col>
+                    <!-- 
+                        Hiển thị các hình ảnh trong link
+                        Sử dụng component <image-card> đã tạo ra trước đó
+                    -->
                     <ion-col no-padding col-12 *ngIf="urlInfo.images && urlInfo.images.length>0"
                         class="background-height">
                         <image-card [imageData]="urlInfo.images" (onClickSub)="onClickMedia($event)"></image-card>
@@ -34,7 +58,7 @@
         </div>
     </div>
 
-    <!-- Hiển thị các link cho nút bấm inappBrowser sử dụng trong app trên ios và android -->
+    <!-- Hiển thị các link trong nội dung tin, mỗi link có một nút bấm để xem -->
     <ion-buttons *ngIf="(contentData | linkify:'links')?.length>0">
         <button *ngFor="let url of contentData | linkify:'links'; let idx = index;" ion-button round outline
             (click)="onClickItem(url)">
