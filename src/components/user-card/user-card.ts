@@ -1,10 +1,3 @@
-/**
- * card hien thi thong tin text noi dung
- * đưa vào text có chứa nội dung và url,
- * card này sẽ hiển thị nội dung có link cho phép kích vào
- * hiển thị các ảnh lấy được trong các link để hiển thị trong khung ảnh
- * đồng thời hiển thị các link bên dưới của trang cho phép gọi inappbrowser
- */
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { PopoverCard } from '../popover-card/popover-card';
 import { PopoverController } from 'ionic-angular';
@@ -14,12 +7,10 @@ import { PopoverController } from 'ionic-angular';
     templateUrl: "user-card.html"
 })
 export class UserCard implements OnInit {
-    //các biến dữ liệu đầu vào
-    @Input() userData: any; //là thông tin chứa: id của bản tin, username, cùng thời gian tạo bản tin này
-    @Input() ownerData: any; //Là thông tin của đối tượng userInfo chứa username, .data.fullname...
-    @Input() contactData: any; //danh bạ unique có chứa avatar đã chuyển đổi
+    @Input() userData: any;
+    @Input() ownerData: any;
+    @Input() contactData: any;
 
-    //sự kiện sinh ra truyền giá trị con cho cấp cha 1 cấp
     @Output() onClickSub = new EventEmitter();
 
     statusIcon = {
@@ -29,18 +20,15 @@ export class UserCard implements OnInit {
         3: "ios-people-outline", //friend of friend
     }
 
-    constructor(
-        private popoverCtrl: PopoverController
+    constructor(private popoverCtrl: PopoverController
     ) { }
 
     ngOnInit() { }
 
-    //sự kiện này được sinh ra khi bấm nút more
-    //hiển thị popup menu tùy chọn cho các lệnh tùy vào tin của user hay của người khác
     onClickMore(ev, isPrivate, icon) {
 
         //neu tin cua user thi hien thi menu:
-        //chinh sua nguoi doc tin (status) --list
+        //chinh sua nguoi doc tin
         //xoa bo tin nay
         //chinh sua noi dung cua tin
 
@@ -93,24 +81,20 @@ export class UserCard implements OnInit {
                 ];
         }
 
-
         let popover = this.popoverCtrl.create(PopoverCard, {
             form: {
-                type: "item", //icon/color/tab/item
+                type: "item",
                 menu: menu
             }
         });
 
-        popover.present({ ev: ev }); //su kien lay toa do hien thi menu
+        popover.present({ ev: ev });
 
-        //this.onClickSub.emit(data);
         popover.onDidDismiss(data => {
             if (data) {
                 //console.log('Nhận dữ liệu chọn',data);
                 this.onClickSub.emit({ command: data })
             }
         })
-
     }
-
 }

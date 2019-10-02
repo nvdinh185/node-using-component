@@ -33,7 +33,7 @@ export class ContentCardPage {
   onClickOpenLink(event) {
     console.log('content', event);
     if (event.link) {
-      var target = "_blank"; //mo trong inappbrowser
+      var target = "_blank";
       var options = "hidden=no, toolbar=yes, location=yes, presentationstyle=fullscreen, clearcache=yes, clearsessioncache=yes";
       this.inAppBrowser.create(event.link, target, options);
     }

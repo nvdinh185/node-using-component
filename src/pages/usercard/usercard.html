@@ -1,13 +1,11 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>usercard</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <div *ngFor="let it of dynamicCards?.items">
     <user-card [userData]="it" [ownerData]="userInfo" [contactData]="contacts" (onClickSub)="onClickMore($event,it.id)">
     </user-card>

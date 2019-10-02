@@ -1,14 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
+import { NgModule } from '@angular/core';
+import { IonicApp, IonicModule } from 'ionic-angular';
+import { HttpClientModule } from '@angular/common/http';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { TimeAgoPipe} from 'time-ago-pipe';
 
 import { MyApp } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { TimeAgoPipe} from 'time-ago-pipe';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { RequestInterceptor } from '../interceptors/requestInterceptor';
 import { ContentCard } from '../components/content-card/content-card';
 import { ImageCard } from '../components/image-card/image-card';
 import { UserCard } from '../components/user-card/user-card';
@@ -53,12 +50,8 @@ import { ApiAuthService } from '../services/apiAuthService';
     PopoverCard
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiAuthService,
     InAppBrowser,
-    RequestInterceptor
   ]
 })
 export class AppModule {}

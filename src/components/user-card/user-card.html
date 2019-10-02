@@ -1,37 +1,42 @@
-<!-- userData cần phải chứa .username == username, .id, .time là thời gian của tin tức -->
 <ion-item *ngIf="userData">
-    <!-- Cần truyền thêm ownerData = userInfo là username được login vào -->
-    <!-- Nếu là user đăng nhập -->
+    <!-- Trường hợp 1: Nếu username của bản tin bằng username đăng nhập -->
     <ion-avatar item-start *ngIf="ownerData?.username===userData.username">
         <!-- Nếu có avatar trong thông tin userInfo thì lấy ảnh đó làm avatar -->
         <img *ngIf="ownerData?.data?.image" [src]="ownerData?.data?.image">
         <!-- Nếu không có avatar trong thông tin userInfo thì lấy ảnh trong thư viện ảnh -->
         <img *ngIf="!(ownerData?.data?.image)" src="assets/imgs/no-image-go.jpg">
     </ion-avatar>
+
     <!-- Nếu có fullname trong userInfo thì lấy, nếu không thì lấy username trong userInfo -->
     <ion-title *ngIf="ownerData?.username===userData.username">
         {{ownerData?.data?.fullname?ownerData?.data?.fullname:ownerData?.username}}</ion-title>
+
+
+    <!-- Trường hợp 2: Nếu username của tin khác username đăng nhập -->
     <!-- Cần phải truyền cho form danh bạ chứa thông tin người dùng -->
     <ion-avatar item-start *ngIf="ownerData?.username!==userData.username">
         <!-- Nếu có avatar trong contactData thì lấy ảnh đó làm avatar -->
-        <img *ngIf="contactData[userData.username]&&contactData[userData.username].avatar"
+        <img *ngIf="contactData[userData.username] && contactData[userData.username].avatar"
             [src]="contactData[userData.username].avatar">
         <!-- Nếu không có avatar trong contactData thì lấy ảnh trong thư viện ảnh -->
-        <img *ngIf="!(contactData[userData.username]&&contactData[userData.username].avatar)"
+        <img *ngIf="!(contactData[userData.username] && contactData[userData.username].avatar)"
             src="assets/imgs/no-image-go.jpg">
     </ion-avatar>
+
     <!-- Nếu có fullname trong contactData thì lấy, nếu không thì lấy username trong bản tin -->
     <ion-title *ngIf="ownerData?.username!==userData.username">
-        {{contactData[userData.username]&&contactData[userData.username].fullname?contactData[userData.username].fullname:userData.username}}
+        {{contactData[userData.username] && contactData[userData.username].fullname?contactData[userData.username].fullname:userData.username}}
     </ion-title>
+
     <!-- Tin tức được post lên thời gian nào -->
     <ion-note style="color: gray">
         {{userData.time | timeAgo}}
         <ion-icon name="{{(statusIcon[userData.status]?statusIcon[userData.status]:'md-globe')}}"></ion-icon>
     </ion-note>
-    <!-- nút more infor sẽ hiển thị thông tin của username này lên, bằng backgroud, ảnh đại diện, tên hiển thị -->
+
+    <!-- nút more infor hiển thị menu tùy chọn các chức năng tùy theo username đăng nhập và username bản tin, trạng thái của bản tin -->
     <button item-end icon-only ion-button clear small color="primary"
-        (click)="onClickMore($event,ownerData?.username===userData.username,(statusIcon[userData.status]?statusIcon[userData.status]:'md-globe'))">
+        (click)="onClickMore($event, ownerData?.username===userData.username, (statusIcon[userData.status]?statusIcon[userData.status]:'md-globe'))">
         <ion-icon name="more"></ion-icon>
     </button>
 </ion-item>
