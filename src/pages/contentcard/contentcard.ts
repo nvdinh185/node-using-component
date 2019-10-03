@@ -11,6 +11,13 @@ export class ContentCardPage {
   constructor(private apiAuth: ApiAuthService,
     public inAppBrowser: InAppBrowser) { }
 
+  dynamicCards = {
+    items: []
+  }
+
+  /**
+   * Lấy danh sách tin trong file url-info.json
+   */
   ngOnInit() {
     setTimeout(() => {
       console.log(this.dynamicCards.items)
@@ -20,10 +27,6 @@ export class ContentCardPage {
         this.dynamicCards.items = res
       })
       .catch(err => console.log(err))
-  }
-
-  dynamicCards = {
-    items: []
   }
 
   /**

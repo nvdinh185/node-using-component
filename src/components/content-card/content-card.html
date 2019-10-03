@@ -5,7 +5,10 @@
     <!-- Hiển thị nội dung bản tin -->
     <div *ngIf="(contentData | linkify:'urlInfos')?.length>0">
         <div *ngFor="let urlInfo of contentData | linkify:'urlInfos'; let idx = index;">
-            <!-- Vì mảng (contentData | linkify:'urlInfos') chỉ có 1 phần tử nên lấy phần tử thứ 0 -->
+            <!-- 
+                Hiển thị nội dung của link pipe nhanh nhất trong các link trong content
+                Phụ thuộc vào tốc độ truy cập mỗi trang web
+            -->
             <div *ngIf="idx===0">
                 <ion-row no-padding>
                     <!-- Hiển thị nội dung thông tin có trong link -->
@@ -15,7 +18,7 @@
                             {{ urlInfo.hostname }}
                         </strong>
                         <!-- Hiển thị title -->
-                        <p text-wrap>
+                        <p>
                             <strong *ngIf="urlInfo.title">
                                 {{ urlInfo.title }}
                             </strong>
@@ -35,7 +38,7 @@
                         <!-- 
                             Hiển thị nút đọc thêm:
                             - Ban đầu: Nếu chiều dài của nội dung nhiều hơn 500
-                            ký tự thì hiển thị nút đọc thêm
+                            ký tự thì hiển thị nút 'đọc thêm'
                             - Sau khi bấm nút 'đọc thêm': giá trị is_readmore tăng thêm 500
                             Nếu chiều dài của nội dung vẫn dài hơn is_readmore thì vẫn hiện nút 'đọc thêm'
                         -->

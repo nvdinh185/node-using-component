@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { PopoverCard } from '../popover-card/popover-card';
 import { PopoverController } from 'ionic-angular';
 
@@ -6,7 +6,7 @@ import { PopoverController } from 'ionic-angular';
     selector: 'user-card',
     templateUrl: "user-card.html"
 })
-export class UserCard implements OnInit {
+export class UserCard {
     @Input() userData: any;
     @Input() ownerData: any;
     @Input() contactData: any;
@@ -22,8 +22,6 @@ export class UserCard implements OnInit {
 
     constructor(private popoverCtrl: PopoverController
     ) { }
-
-    ngOnInit() { }
 
     onClickMore(ev, isPrivate, icon) {
 
@@ -92,7 +90,6 @@ export class UserCard implements OnInit {
 
         popover.onDidDismiss(data => {
             if (data) {
-                //console.log('Nhận dữ liệu chọn',data);
                 this.onClickSub.emit({ command: data })
             }
         })

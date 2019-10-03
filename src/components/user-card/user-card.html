@@ -13,17 +13,17 @@
 
 
     <!-- Trường hợp 2: Nếu username của tin khác username đăng nhập -->
-    <!-- Cần phải truyền cho form danh bạ chứa thông tin người dùng -->
+    <!-- Cần phải truyền đối tượng contacts chứa thông tin danh bạ người dùng -->
     <ion-avatar item-start *ngIf="ownerData?.username!==userData.username">
-        <!-- Nếu có avatar trong contactData thì lấy ảnh đó làm avatar -->
+        <!-- Nếu username bản tin có trong danh bạ và có avatar trong danh bạ đó thì lấy ảnh này làm avatar -->
         <img *ngIf="contactData[userData.username] && contactData[userData.username].avatar"
             [src]="contactData[userData.username].avatar">
-        <!-- Nếu không có avatar trong contactData thì lấy ảnh trong thư viện ảnh -->
+        <!-- Nếu không có avatar trong danh bạ thì lấy ảnh trong thư viện ảnh -->
         <img *ngIf="!(contactData[userData.username] && contactData[userData.username].avatar)"
             src="assets/imgs/no-image-go.jpg">
     </ion-avatar>
 
-    <!-- Nếu có fullname trong contactData thì lấy, nếu không thì lấy username trong bản tin -->
+    <!-- Nếu có fullname trong danh bạ thì lấy, nếu không thì lấy username trong bản tin -->
     <ion-title *ngIf="ownerData?.username!==userData.username">
         {{contactData[userData.username] && contactData[userData.username].fullname?contactData[userData.username].fullname:userData.username}}
     </ion-title>

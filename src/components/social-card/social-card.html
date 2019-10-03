@@ -1,4 +1,9 @@
-<!-- Các kết quả ghi nhận được -->
+<!-- Hiện thị các kết quả nếu có -->
+<!-- 
+    Phải kiểm tra điều kiện so sánh: resultData?.likes?.length>0 (có dấu ?.)
+    để nếu có giá trị mới truy cập tiếp
+    tránh trường hợp không có giá trị sẽ xảy ra lỗi
+-->
 <ion-item no-padding *ngIf="
         (resultData?.likes?.length>0)
         ||
@@ -8,16 +13,16 @@
     <ion-row no-padding>
         <ion-col no-padding align-self-center text-center>
             <div *ngIf="resultData?.likes?.length>0">
-                <ion-icon *ngIf="resultData?.likes?.like>0" color="{{iconLikes?.like?.color}}" icon-start clear small
-                    name="{{iconLikes?.like?.icon}}"></ion-icon>
-                <ion-icon *ngIf="resultData?.likes?.love>0" color="{{iconLikes?.love?.color}}" icon-start clear small
-                    name="{{iconLikes?.love?.icon}}"></ion-icon>
-                <ion-icon *ngIf="resultData?.likes?.unlike>0" color="{{iconLikes?.unlike?.color}}" icon-start clear
-                    small name="{{iconLikes?.unlike?.icon}}"></ion-icon>
-                <ion-icon *ngIf="resultData?.likes?.sad>0" color="{{iconLikes?.sad?.color}}" icon-start clear small
-                    name="{{iconLikes?.sad?.icon}}"></ion-icon>
-                <ion-icon *ngIf="resultData?.likes?.angery>0" color="{{iconLikes?.angery?.color}}" icon-start clear
-                    small name="{{iconLikes?.angery?.icon}}"></ion-icon>
+                <ion-icon *ngIf="resultData?.likes?.like>0" color="{{iconLikes.like.color}}" icon-start clear small
+                    name="{{iconLikes.like.icon}}"></ion-icon>
+                <ion-icon *ngIf="resultData?.likes?.love>0" color="{{iconLikes.love.color}}" icon-start clear small
+                    name="{{iconLikes.love.icon}}"></ion-icon>
+                <ion-icon *ngIf="resultData?.likes?.unlike>0" color="{{iconLikes.unlike.color}}" icon-start clear
+                    small name="{{iconLikes.unlike.icon}}"></ion-icon>
+                <ion-icon *ngIf="resultData?.likes?.sad>0" color="{{iconLikes.sad.color}}" icon-start clear small
+                    name="{{iconLikes.sad.icon}}"></ion-icon>
+                <ion-icon *ngIf="resultData?.likes?.angery>0" color="{{iconLikes.angery.color}}" icon-start clear
+                    small name="{{iconLikes.angery.icon}}"></ion-icon>
                 <ion-note *ngIf="resultData?.likes?.length>0">{{resultData?.likes?.length}}</ion-note>
             </div>
         </ion-col>
@@ -34,9 +39,14 @@
 <ion-item no-padding *ngIf="actionData?.like || actionData?.comment || actionData?.share">
     <ion-row>
         <ion-col no-padding text-center>
+            <!-- 
+                Nếu có thuộc tính của user login trong đối tượng resultsData thì hiển thị
+                màu sắc, icon và name theo định nghĩa trong đối tượng iconLikes
+                Nếu không thì hiển thị theo đối tượng actionsData
+            -->
             <button *ngIf="actionData?.like" ion-button clear small
                 color="{{(resultData?.likes[ownerData?.username]?iconLikes[resultData?.likes[ownerData?.username]].color:actionData?.like?.color)}}"
-                (click)="onClickActions($event,actionData?.like)" icon-start>
+                (click)="onClickActions($event, actionData?.like)" icon-start>
                 <ion-icon
                     name="{{(resultData?.likes[ownerData?.username]?iconLikes[resultData?.likes[ownerData?.username]].icon:actionData?.like?.icon)}}">
                 </ion-icon>
@@ -45,14 +55,14 @@
         </ion-col>
         <ion-col no-padding text-center>
             <button *ngIf="actionData?.comment" ion-button clear small color="{{actionData?.comment?.color}}"
-                (click)="onClickActions($event,actionData?.comment)" icon-start>
+                (click)="onClickActions($event, actionData?.comment)" icon-start>
                 <ion-icon name='{{actionData?.comment?.icon}}'></ion-icon>
                 {{actionData?.comment?.name}}
             </button>
         </ion-col>
         <ion-col no-padding text-center>
             <button *ngIf="actionData?.share" ion-button clear small color="{{actionData?.share?.color}}"
-                (click)="onClickActions($event,actionData?.share)" icon-start>
+                (click)="onClickActions($event, actionData?.share)" icon-start>
                 <ion-icon name='{{actionData?.share?.icon}}'></ion-icon>
                 {{actionData?.share?.name}}
             </button>
